@@ -1,4 +1,3 @@
-:set number
 :set printoptions=number:y
 :set tabstop=4 
 :set nu
