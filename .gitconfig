@@ -36,5 +36,13 @@
 	nfmerge = merge --no-ff
 [push]
 	default = simple
+[help]
+	autocorrect = 1
+[credential]
+	helper = osxkeychain
 [core]
 	excludesfile = /Users/kristen/.gitignore_global
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
