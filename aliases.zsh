@@ -1,9 +1,5 @@
-#cd things
-alias .='cd .'
-alias ..='cd ../'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
+#bower things
+alias bower='noglob bower'
 
 #chmod things
 alias ch='chmod'
@@ -17,6 +13,9 @@ alias mkd='mkdir'
 #diff things
 alias d='diff'
 
+#git things
+#`alias git='hub'
+
 #ls things
 alias ll='ls -l'
 alias la='ls -a'          # show hidden files
@@ -28,6 +27,13 @@ alias lt='ls -ltr'         # sort by date, most recent last
 alias lm='ls -al |more'    # pipe through
 alias lr='ls -lR'          # recursive ls
 
+#mongo things
+alias mongostart='launchctl start homebrew.mxcl.mongodb'
+alias mongostop='launchctl stop homebrew.mxcl.mongodb'
+
+#node things
+alias npm-exec='PATH=$(npm bin):$PATH'
+
 #programming languages
 alias love='/Applications/love.app/Contents/MacOS/love'
 alias ja='java'
@@ -36,11 +42,14 @@ alias jca='javac *.java'
 alias jrm='rm *.class'
 alias rb='ruby'
 alias py='python3'
+alias python='python3'
 alias py2='python2'
+alias pip='pip3'
 alias spl='make -f /usr/spl/Makefile'
 
 #rails things
 alias rsp='rails s puma'
+alias rake='bundle exec rake'
 
 #safety with kristen
 alias rm='rm -i'
@@ -50,8 +59,10 @@ alias mv='mv -i'
 alias kdrm='cd '/Applications/tools/KindleBooks_Tools/KindleBooks/' && '/usr/local/bin/pythonw'  '/Applications/tools/KindleBooks_Tools/KindleBooks/KindleBooks.pyw'  && echo Exit status: $? && exit 1'
 
 #ssh things
-alias glados='ssh -Y knm5153@glados.cs.rit.edu'
-alias nitron='ssh -Y knm5153@nitron.se.rit.edu'
+alias glados='ssh -X knm5153@glados.cs.rit.edu'
+alias nitron='ssh -X knm5153@nitron.se.rit.edu'
+alias web='ssh knmsse@web.ad.sofse.org'
+alias webtest='ssh knmsse@webtest.ad.sofse.org'
 
 #vim things
 alias vd='vimdiff'
