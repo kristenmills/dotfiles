@@ -2,8 +2,11 @@
 execute pathogen#infect()
 execute pathogen#helptags()
 
-"add Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+""""""""""""""""""""""""""""""
+"          GENERAL           "
+""""""""""""""""""""""""""""""
+
+"Show the status bar
 set laststatus=2
 
 "Syntax highlighting and formatting
@@ -13,7 +16,10 @@ filetype plugin indent on
 " Set 256 color
 set t_Co=256
 
-" Automatically load changed files
+"Color scheme
+set background=dark
+colorscheme base16-eighties
+
 set autoread
 
 "Line numbers and relative line numbers
@@ -49,6 +55,10 @@ set foldenable
 " Set leader to space
 let mapleader = ","
 
+""""""""""""""""""""""""""""""
+"         PLUGINS            "
+""""""""""""""""""""""""""""""
+
 "Strip whitespace on save
 autocmd BufWritePre * StripWhitespace
 
@@ -71,6 +81,13 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
+"Auto populate powerline symbols
+let g:airline_powerline_fonts = 1
+
+""""""""""""""""""""""""""""""""
+"          MAPPINGS            "
+""""""""""""""""""""""""""""""""
 
 " Copy and paste to system clipboard
 vmap <leader>y "+y
