@@ -90,10 +90,6 @@ endif
 "Auto populate powerline symbols
 let g:airline_powerline_fonts = 1
 
-" Configure emmet to only work in certain file types
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,jsx,js: EmmetInstall
-
 """"""""""""""""""""""""""""""""
 "          MAPPINGS            "
 """"""""""""""""""""""""""""""""
@@ -136,3 +132,6 @@ nnoremap <leader>l <C-w><C-l>
 
 " Nerdtree mappings
 nmap <leader>t <plug>NERDTreeTabsToggle<CR>
+
+" Fugitive mappings
+nmap <leader>gs :Gstatus<CR>

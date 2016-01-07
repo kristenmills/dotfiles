@@ -53,6 +53,8 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
 export PATH="$PATH:/Library/TeX/texbin/"
 
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+
 ### Added by the Heroku Toolbelt
 export PATH=$PATH:/usr/local/heroku/bin
 
@@ -62,8 +64,11 @@ export PATH=$PATH:/usr/local/heroku/bin
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+## Tmuxifier
+eval "$(tmuxifier init -)"
+
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 fortune | cowsay -f stegosaurus | lolcat
