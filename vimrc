@@ -17,6 +17,7 @@ filetype plugin indent on
 set t_Co=256
 
 "Color scheme
+let base16colorspace=256
 set background=dark
 colorscheme base16-eighties
 
@@ -52,6 +53,10 @@ set foldmethod=indent
 set foldlevelstart=99
 set foldenable
 
+" Make splits happen below and to the right
+set splitright
+set splitbelow
+
 " Set leader to space
 let mapleader = ","
 
@@ -84,6 +89,10 @@ endif
 
 "Auto populate powerline symbols
 let g:airline_powerline_fonts = 1
+
+" Configure emmet to only work in certain file types
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,jsx,js: EmmetInstall
 
 """"""""""""""""""""""""""""""""
 "          MAPPINGS            "
