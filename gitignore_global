@@ -1,0 +1,4 @@
+.DS_Store
+rethinkdb_data
+*.sublime-project
+*.sublime-workspace

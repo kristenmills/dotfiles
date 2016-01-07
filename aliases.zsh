@@ -3,7 +3,6 @@ alias bower='noglob bower'
 
 #chmod things
 alias ch='chmod'
-alias chf='chmod 777'
 alias chx='chmod +x'
 
 #directory things
@@ -51,18 +50,13 @@ alias spl='make -f /usr/spl/Makefile'
 alias rsp='rails s puma'
 alias rake='bundle exec rake'
 
+alias rethinkdb.start='launchctl load /usr/local/opt/rethinkdb/homebrew.mxcl.rethinkdb.plist'
+ alias rethinkdb.stop='launchctl unload /usr/local/opt/rethinkdb/homebrew.mxcl.rethinkdb.plist'
+
 #safety with kristen
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-
-alias kdrm='cd '/Applications/tools/KindleBooks_Tools/KindleBooks/' && '/usr/local/bin/pythonw'  '/Applications/tools/KindleBooks_Tools/KindleBooks/KindleBooks.pyw'  && echo Exit status: $? && exit 1'
-
-#ssh things
-alias glados='ssh -X knm5153@glados.cs.rit.edu'
-alias nitron='ssh -X knm5153@nitron.se.rit.edu'
-alias web='ssh knmsse@web.ad.sofse.org'
-alias webtest='ssh knmsse@webtest.ad.sofse.org'
 
 #vim things
 alias vd='vimdiff'

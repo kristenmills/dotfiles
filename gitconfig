@@ -1,8 +1,8 @@
 [github]
-	user = kristenmills
+    user = kristenmills
 [user]
-	name = kristenmills
-	email = kristen@kristen-mills.com
+    name = Kristen Mills
+    email = kristen@kristen-mills.com
 [color]
     ui = auto
   [color "branch"]
@@ -21,9 +21,9 @@
 
 [alias]
     uncommit = reset --soft HEAD^
-	unstage = reset
-	unstash = stash pop
-	st = status
+    unstage = reset
+    unstash = stash pop
+    st = status
     ci = commit
     br = branch
     co = checkout
@@ -33,16 +33,20 @@
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
-	nfmerge = merge --no-ff
+    nfmerge = merge --no-ff
 [push]
-	default = simple
+    default = simple
 [help]
-	autocorrect = 1
+    autocorrect = 1
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [core]
-	excludesfile = /Users/kristen/.gitignore_global
+    excludesfile = /Users/kristen/.gitignore_global
 [filter "media"]
-	clean = git media clean %f
-	smudge = git media smudge %f
-	required = true
+    clean = git media clean %f
+    smudge = git media smudge %f
+    required = true
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
