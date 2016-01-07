@@ -41,17 +41,20 @@ export GOOS=darwin
 export EDITOR=vim
 export NODE_PATH="/usr/local/lib/node"
 export NODE_PATH=$NODE_PATH:/Users/kristen/.nvm/versions/node/v0.12.2/lib/node_modules
+
 #Customize to your needs...
-export PATH=/usr/bin/flex:/Users/kristen/.ScreenUtil:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Users/kristen/.go/bin:/opt/local/bin:/opt/iphone/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/usr/X11/bin:/usr/local/git/bin:/usr/texbin:/Applications/Blender/blender.app/Contents/MacOS
+export PATH=/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/bin:/usr/local/git/bin:/usr/texbin:$PATH
 
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+
+export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/2.7/bin:$HOME/.go/:/Applications/Blender/blender.app/Contents/MacOS
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
 export PATH="$PATH:/Library/TeX/texbin/"
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH=$PATH:/usr/local/heroku/bin
 
 ### Autojump
 [[ -s `brew --prefix`/etc/autojump.sh ]] && source `brew --prefix`/etc/autojump.sh
