@@ -40,7 +40,7 @@ export GOARCH=amd
 export GOOS=darwin
 export EDITOR=vim
 export NODE_PATH="/usr/local/lib/node"
-export NODE_PATH=$NODE_PATH:/Users/kristen/.nvm/versions/node/v0.12.2/lib/node_modules
+export NODE_PATH=$NODE_PATH:$HOME/.nvm/versions/node/v0.12.2/lib/node_modules
 
 #Customize to your needs...
 export PATH=/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/bin:/usr/local/git/bin:/usr/texbin:$PATH
