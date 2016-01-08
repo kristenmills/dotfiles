@@ -33,9 +33,6 @@ set cursorline
 " Highlight search matches
 set hlsearch
 
-"Wrap text at 80 characters
-set tw=80
-
 "Spaces instead of tabs
 set expandtab
 
