@@ -87,6 +87,9 @@ endif
 "Auto populate powerline symbols
 let g:airline_powerline_fonts = 1
 
+" Nerd tree auto open
+let g:nerdtree_tabs_open_on_console_startup = 1
+
 """"""""""""""""""""""""""""""""
 "          MAPPINGS            "
 """"""""""""""""""""""""""""""""
