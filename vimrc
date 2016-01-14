@@ -140,4 +140,4 @@ nmap <leader>gs :Gstatus<CR>
 nnoremap <leader>a :Ag
 
 " gf mappings
-nnoremap <leader>gf <C-w>gf
+nmap <leader>gf <C-w>gf
