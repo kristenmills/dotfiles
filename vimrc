@@ -138,3 +138,6 @@ nmap <leader>gs :Gstatus<CR>
 
 " ag mappings
 nnoremap <leader>a :Ag
+
+" gf mappings
+nnoremap <leader>gf <C-w>gf
