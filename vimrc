@@ -135,3 +135,12 @@ nmap <leader>t <plug>NERDTreeTabsToggle<CR>
 
 " Fugitive mappings
 nmap <leader>gs :Gstatus<CR>
+
+" ag mappings
+nnoremap <leader>a :Ag
+
+" gf mappings
+nmap <leader>gf <C-w>gf
+
+" noh mapping
+nnoremap <leader>no :noh<cr>
