@@ -33,6 +33,8 @@
         "uptime":                  { "fg": "base16:base1", "bg": "base16:base01", "attrs": [] },
         "battery_full":            { "fg": "base16:green", "bg": "base16:base02", "attrs": [] },
         "battery_empty":           { "fg": "base16:base2", "bg": "base16:base02", "attrs": [] },
-        "battery":                 { "fg": "base16:yellow", "bg": "base16:base02", "attrs": [] }
+        "battery":                 { "fg": "base16:yellow", "bg": "base16:base02", "attrs": [] },
+        "player":                  { "fg": "base16:green", "bg": "base16:base02", "attrs": [] }
+
     }
 }

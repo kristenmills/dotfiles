@@ -2,6 +2,10 @@
   "segments": {
     "right": [
       {
+        "function": "segments.itunes.itunes",
+        "name": "player"
+      },
+      {
         "function": "powerline.segments.common.wthr.weather",
         "args": {
           "unit": "F"

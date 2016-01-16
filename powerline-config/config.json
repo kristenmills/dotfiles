@@ -1,6 +1,7 @@
 {
 	"common": {
-		"term_truecolor": false
+		"term_truecolor": false,
+		"paths": ["~/.config/powerline/"]
 	},
 	"ext": {
 		"ipython": {
