@@ -21,7 +21,9 @@ let base16colorspace=256
 set background=dark
 colorscheme base16-eighties
 
+" Setup autoread
 set autoread
+au FocusGained,BufEnter * :silent! !
 
 "Line numbers and relative line numbers
 set number
@@ -87,8 +89,14 @@ endif
 "Auto populate powerline symbols
 let g:airline_powerline_fonts = 1
 
-" Nerd tree auto open
+" Nerd tree auto open and hidden files
 let g:nerdtree_tabs_open_on_console_startup = 1
+let NERDTreeShowHidden=1
+
+" syntastic
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
 
 """"""""""""""""""""""""""""""""
 "          MAPPINGS            "
@@ -106,7 +114,8 @@ vmap <leader>P "+P
 nnoremap <leader>w :ToggleWhitespace<cr>
 
 " Map Leader VR to opening my vimrc in a vertical split
-nnoremap <leader>vr :vsplit ~/.vimrc <CR>
+nnoremap <leader>vr :vsplit ~/.vimrc <cr>
+nnoremap <leader>vrs :source ~/.vimrc <cr>
 
 " No arrow keys
 noremap <Up> <NOP>
@@ -144,3 +153,12 @@ nmap <leader>gf <C-w>gf
 
 " noh mapping
 nnoremap <leader>no :noh<cr>
+
+"syntastic mappings
+nnoremap <leader>ls :Errors<cr>
+nnoremap <leader>lh :lclose<cr>
+nnoremap <leader>ln :lnext<cr>
+nnoremap <leader>lp :lprevious<cr>
+
+"replace double quotes with single quotes
+nnoremap <leader>sq :%s/"/'/g<cr>
