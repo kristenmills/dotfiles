@@ -6,12 +6,6 @@
         "name": "player"
       },
       {
-        "function": "powerline.segments.common.wthr.weather",
-        "args": {
-          "unit": "F"
-        }
-      },
-      {
         "function": "powerline.segments.common.time.date",
         "name": "time",
         "args": {

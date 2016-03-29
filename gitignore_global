@@ -3,3 +3,4 @@ rethinkdb_data
 *.sublime-project
 *.sublime-workspace
 *.swp
+*.swo

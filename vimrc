@@ -92,7 +92,8 @@ let g:airline_powerline_fonts = 1
 " Nerd tree auto open and hidden files
 let g:nerdtree_tabs_open_on_console_startup = 1
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.DS_Store$', '\.swp$']
+let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.git/$', '\.pyc$']
+
 " syntastic
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_always_populate_loc_list = 1
@@ -162,3 +163,7 @@ nnoremap <leader>lp :lprevious<cr>
 
 "replace double quotes with single quotes
 nnoremap <leader>sq :%s/"/'/g<cr>
+nnoremap gy ggvG$y
+nnoremap <leader>g gg=G
+
+nnoremap <leader>s :set spell!<cr>
