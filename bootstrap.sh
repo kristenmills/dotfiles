@@ -7,9 +7,10 @@ dotfiles=`pwd`
 
 mkdir $HOME/.config
 
-ln -s $dotfiles/oh-my-zsh-custom/ $HOME/.oh-my-zsh/custom
-ln -s $dotfiles/powerline-config/ $HOME/.config/powerline
-ln -s $dotfiles/vim $HOME/.vim
+if [ ! -d $HOME/.oh-my-zsh/custom ]; then ln -s $dotfiles/oh-my-zsh-custom/ $HOME/.oh-my-zsh/custom; fi
+if [ ! -d $HOME/.config/powerline ]; then ln -s $dotfiles/powerline-config/ $HOME/.config/powerline; fi
+if [ ! -d $HOME/.vim ]; then ln -s $dotfiles/vim $HOME/.vim; fi
+if [ ! -d $HOME/.config/nvim ]; then ln -s $dotfiles/vim $HOME/.config/nvim; fi
 ln -s $dotfiles/gitconfig $HOME/.gitconfig
 ln -s $dotfiles/gitignore_global $HOME/.gitignore_global
 ln -s $dotfiles/tmux.conf $HOME/.tmux.conf
