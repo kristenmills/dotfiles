@@ -1,6 +1,38 @@
-" Run Pathogen
-execute pathogen#infect()
-execute pathogen#helptags()
+""""""""""""""""""""""""""""""
+"          VIMPLUG           "
+""""""""""""""""""""""""""""""
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'rking/ag.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'mattn/emmet-vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'ervandew/supertab'
+Plug 'scrooloose/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'moll/vim-node'
+Plug 'tpope/vim-rails'
+Plug 'wavded/vim-stylus'
+Plug 'tpope/vim-surround'
+
+call plug#end()
 
 """"""""""""""""""""""""""""""
 "          GENERAL           "
@@ -88,6 +120,7 @@ endif
 
 "Auto populate powerline symbols
 let g:airline_powerline_fonts = 1
+let g:airline_theme='base16'
 
 " Nerd tree auto open and hidden files
 let g:nerdtree_tabs_open_on_console_startup = 1
@@ -98,6 +131,7 @@ let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.git/$', '\.pyc$']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
+
 
 """"""""""""""""""""""""""""""""
 "          MAPPINGS            "
