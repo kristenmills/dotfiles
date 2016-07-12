@@ -6,17 +6,23 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'rking/ag.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Shougo/deoplete.nvim', Cond(has('nvim'), { 'do': function('DoRemote') })
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
@@ -25,18 +31,16 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'osyo-manga/vim-monster'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'moll/vim-node'
+Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-rails'
 Plug 'wavded/vim-stylus'
 Plug 'tpope/vim-surround'
 
 call plug#end()
-
-""""""""""""""""""""""""""""""
-"          GENERAL           "
-""""""""""""""""""""""""""""""
 
 "Show the status bar
 set laststatus=2
@@ -91,10 +95,6 @@ set splitbelow
 " Set leader to space
 let mapleader = ","
 
-""""""""""""""""""""""""""""""
-"         PLUGINS            "
-""""""""""""""""""""""""""""""
-
 "Strip whitespace on save
 autocmd BufWritePre * StripWhitespace
 
@@ -131,11 +131,6 @@ let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.git/$', '\.pyc$']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-
-
-""""""""""""""""""""""""""""""""
-"          MAPPINGS            "
-""""""""""""""""""""""""""""""""
 
 " Copy and paste to system clipboard
 vmap <leader>y "+y
@@ -201,3 +196,16 @@ nnoremap gy ggvG$y
 nnoremap <leader>g gg=G
 
 nnoremap <leader>s :set spell!<cr>
+
+"session things
+augroup sourcesession
+        autocmd!
+        autocmd VimEnter * nested
+         \ if !argc() && empty(v:this_session) && filereadable('Session.vim') |
+         \   source Session.vim |
+         \ endif
+augroup END
+
+"better rspec syntax highlighting outside of rails projects
+autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
+highlight def link rubyRspec Function
