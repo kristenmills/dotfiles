@@ -195,7 +195,12 @@ nnoremap <leader>sq :%s/"/'/g<cr>
 nnoremap gy ggvG$y
 nnoremap <leader>g gg=G
 
+"toggle spell check
 nnoremap <leader>s :set spell!<cr>
+
+"Use alt for incrementing and decrementing
+nnoremap å <C-a>
+nnoremap ≈ <C-x>
 
 "session things
 augroup sourcesession
@@ -207,5 +212,5 @@ augroup sourcesession
 augroup END
 
 "better rspec syntax highlighting outside of rails projects
-autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
+autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it its specify shared_context shared_examples shared_examples_for shared_context include_examples include_context it_should_behave_like it_behaves_like before after around subject fixtures controller_name helper_name scenario feature background given described_class let
 highlight def link rubyRspec Function
