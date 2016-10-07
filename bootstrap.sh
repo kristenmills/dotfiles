@@ -6,6 +6,7 @@ git submodule update
 dotfiles=`pwd`
 
 mkdir $HOME/.config
+mkdir $dotfiles/vim/undo
 
 if [ ! -d $HOME/.oh-my-zsh/custom ]; then ln -s $dotfiles/oh-my-zsh-custom/ $HOME/.oh-my-zsh/custom; fi
 if [ ! -d $HOME/.config/powerline ]; then ln -s $dotfiles/powerline-config/ $HOME/.config/powerline; fi
