@@ -52,10 +52,12 @@ filetype plugin indent on
 " Set 256 color
 set t_Co=256
 
-"Color scheme
-let base16colorspace=256
-set background=dark
-colorscheme base16-eighties
+"Color scheme`
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  set background=dark
+  source ~/.vimrc_background
+endif
 
 " Setup autoread
 set autoread
