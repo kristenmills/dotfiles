@@ -30,16 +30,14 @@ class iTunesPlayerSegment(PlayerSegment):
 		now_playing = now_playing.split(status_delimiter)
 		if len(now_playing) != 6:
 			return
-		title, artist = now_playing[0], now_playing[1]
-		title = title[0:25] + "…" if len(title) > 25 else title
-		artist = artist[0:15] + "…" if len(artist) > 15 else artist
+		title, artist, album = now_playing[0], now_playing[1], now_playing[2]
 		state = _convert_state(now_playing[5])
 		total = _convert_seconds(now_playing[4])
 		elapsed = _convert_seconds(float(now_playing[4]) - float(now_playing[4]))
 		return {
 			'title': title,
-			'artist': now_playing[1],
-			'album': now_playing[2],
+			'artist': artist,
+			'album': album,
 			'total': total,
 			'elapsed': elapsed,
 			'state': state
