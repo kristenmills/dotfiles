@@ -91,6 +91,8 @@ echo "Installing Neovim"
 brew install neovim/neovim/neovim
 pip3 install neovim
 
+pip3 install powerline-status
+
 # source zshrc and Set base16 theme
 source $HOME/.zshrc
 base16_ocean
