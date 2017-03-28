@@ -4,3 +4,4 @@ rethinkdb_data
 *.sublime-workspace
 *.swp
 *.swo
+.tmuxinatior.yml

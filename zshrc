@@ -48,7 +48,7 @@ source $ZSH/oh-my-zsh.sh
 export GOROOT=$HOME/.go
 export GOARCH=amd
 export GOOS=darwin
-export EDITOR=vim
+export EDITOR=nvim
 export NODE_PATH="/usr/local/lib/node"
 export NODE_PATH=$NODE_PATH:$HOME/.nvm/versions/node/v0.12.2/lib/node_modules
 
@@ -63,8 +63,6 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
 export PATH="$PATH:/Library/TeX/texbin/"
 
-export PATH="$HOME/.tmuxifier/bin:$PATH"
-
 ### Added by the Heroku Toolbelt
 export PATH=$PATH:/usr/local/heroku/bin
 
@@ -74,13 +72,13 @@ export PATH=$PATH:/usr/local/heroku/bin
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-## Tmuxifier
-eval "$(tmuxifier init -)"
-
 # Base16 Shell
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-fortune | cowsay -f stegosaurus | lolcat
-
 source $HOME/.zshrc.overrides
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+fortune | cowsay -f stegosaurus | lolcat

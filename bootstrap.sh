@@ -24,6 +24,13 @@ function installOrUpdate() {
    fi
 }
 
+function createOverrides() {
+  if [ ! -e $1.overrides ]; then
+    echo "Creating $1.overrides"
+    echo "$2 For things I don't want to acciedently commit" > $1.overrides
+  fi
+}
+
 git submodule init
 git submodule update
 
@@ -34,10 +41,8 @@ mkdir -p $HOME/.config
 mkdir -p $dotfiles/vim/undo
 mkdir -p $HOME/development
 
-if [ ! -e $HOME/.zshrc.overrides ]; then
-  echo "Creating Overrides file"
-  echo "# For things I don't want to accidently commit" > $HOME/.zshrc.overrides
-fi
+createOverrides $HOME/.zshrc \#
+createOverrides $HOME/.vimrc \"
 
 # Install Oh-my-zsh
 if [ ! -d $HOME/.oh-my-zsh ]; then
@@ -59,7 +64,6 @@ moveAndLink $HOME/.vimrc $dotfiles/vimrc
 moveAndLink $HOME/.zshrc $dotfiles/zshrc
 
 # install or update all the things
-installOrUpdate $HOME/.tmuxifier https://github.com/jimeh/tmuxifier
 installOrUpdate $HOME/.config/base16-shell https://github.com/chriskempson/base16-shell
 installOrUpdate $HOME/.config/fonts https://github.com/powerline/fonts
 $HOME/.config/fonts/install.sh
@@ -85,6 +89,7 @@ if [ ! -d $HOME/.rbenv/versions/$ruby_version ]; then
   eval "$(rbenv init -)"
 fi
 gem install lolcat
+gem install tmuxinator
 
 # Install neovim
 echo "Installing Neovim"
@@ -95,4 +100,4 @@ pip3 install powerline-status
 
 # source zshrc and Set base16 theme
 source $HOME/.zshrc
-base16_ocean
+base16_materia

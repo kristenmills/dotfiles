@@ -2,8 +2,28 @@
   "segments": {
     "right": [
       {
-        "function": "segments.itunes.itunes",
+        "function": "segments.spotify.spotify",
         "name": "player"
+      },
+      {
+        "function": "powerline.segments.common.wthr.weather",
+        "args": {
+          "unit": "F",
+          "icons": {
+            "day":           "🌤",
+            "blustery":      "💨",
+            "rainy":         "☔",
+            "cloudy":        "☁",
+            "snowy":         "❅",
+            "stormy":        "⛈",
+            "foggy":         "🌫",
+            "sunny":         "☀️",
+            "night":         "☾",
+            "windy":         "💨",
+            "not_available": "�",
+            "unknown":       "⚠"
+          }
+        }
       },
       {
         "function": "powerline.segments.common.time.date",
