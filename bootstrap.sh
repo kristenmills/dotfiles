@@ -27,7 +27,7 @@ function installOrUpdate() {
 function createOverrides() {
   if [ ! -e $1.overrides ]; then
     echo "Creating $1.overrides"
-    echo "$2 For things I don't want to acciedently commit" > $1.overrides
+    echo "$2 For things I don't want to accidently commit" > $1.overrides
   fi
 }
 
@@ -46,7 +46,7 @@ createOverrides $HOME/.vimrc \"
 
 # Install Oh-my-zsh
 if [ ! -d $HOME/.oh-my-zsh ]; then
-  echo "Installing Oh My Zsh. Run bootstrap again with this finishes"
+  echo "Installing Oh My Zsh. Run bootstrap again when this finishes"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
