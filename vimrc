@@ -138,7 +138,7 @@ nnoremap <leader>l <C-w><C-l>
 " gf mappings
 nmap <leader>gf <C-w>gf
 
-nnoremap gy ggvG$y
+nnoremap gy ggyG
 nnoremap <leader>g gg=G
 
 "toggle spell check
