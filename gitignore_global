@@ -5,3 +5,4 @@ rethinkdb_data
 *.swp
 *.swo
 .tmuxinatior.yml
+.tern-port
