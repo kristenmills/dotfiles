@@ -46,7 +46,7 @@ createOverrides $HOME/.vimrc \"
 
 # Install Oh-my-zsh
 if [ ! -d $HOME/.oh-my-zsh ]; then
-  echo "Installing Oh My Zsh. Run bootstrap again when this finishes"
+  echo "Installing Oh My Zsh. Run exit after it switches your shell"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
