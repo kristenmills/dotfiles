@@ -32,7 +32,7 @@ function createOverrides() {
 }
 
 git submodule init
-git submodule update
+git submodule update --remote
 
 dotfiles=`pwd`
 ruby_version=2.3.0
@@ -65,8 +65,6 @@ moveAndLink $HOME/.zshrc $dotfiles/zshrc
 
 # install or update all the things
 installOrUpdate $HOME/.config/base16-shell https://github.com/chriskempson/base16-shell
-installOrUpdate $HOME/.config/fonts https://github.com/powerline/fonts
-$HOME/.config/fonts/install.sh
 
 # Install or update  Homebrew
 which -s brew
@@ -79,7 +77,9 @@ else
 fi
 
 # brew install all the things
-brew install python3 autojump python fortune cowsay rbenv ruby-build tmux
+brew install python3 autojump python fortune cowsay rbenv ruby-build tmuax
+brew tap caskroom/fonts
+brew cask install font-firacode-nerd-font
 
 # Install Ruby and lolcat
 if [ ! -d $HOME/.rbenv/versions/$ruby_version ]; then

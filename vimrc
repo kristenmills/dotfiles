@@ -13,39 +13,45 @@ endfunction
 call plug#begin('~/.vim/plugged')
 
 Plug 'rking/ag.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'chriskempson/base16-vim'
-Plug 'Shougo/context_filetype.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Shougo/denite.nvim', Cond(has('nvim'), { 'do': function('DoRemote') })
 Plug 'Shougo/deoplete.nvim', Cond(has('nvim'), { 'do': function('DoRemote') })
+Plug 'zchee/deoplete-go', Cond(has('nvim'), { 'do': 'make'})
 Plug 'zchee/deoplete-jedi'
-Plug 'carlitux/deoplete-ternjs', Cond(has('nvim'), { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' })
+Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'othree/html5.vim'
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'vim-scripts/nginx.vim'
+Plug 'mhartington/nvim-typescript'
 Plug 'ervandew/supertab'
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
+Plug 'leafgarland/typescript-vim'
 Plug 'SirVer/ultisnips'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'tpope/vim-abolish'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-bundler'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'fatih/vim-go'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'osyo-manga/vim-monster'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'jistr/vim-nerdtree-tabs'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plug 'jistr/vim-nerdtree-tabs'
 Plug 'moll/vim-node'
-Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
 Plug 'honza/vim-snippets'
-Plug 'wavded/vim-stylus'
+Plug 'styled-components/vim-styled-components', { 'branch': 'rewrite' }
 Plug 'tpope/vim-surround'
 
 call plug#end()
+
+set clipboard=unnamed
 
 "Show the status bar
 set laststatus=2
@@ -56,6 +62,7 @@ filetype plugin indent on
 
 " Set 256 color
 set t_Co=256
+let g:vim_jsx_pretty_colorful_config = 1
 
 "Color scheme`
 if filereadable(expand("~/.vimrc_background"))
@@ -67,6 +74,9 @@ endif
 " Setup autoread
 set autoread
 au FocusGained,BufEnter * :silent! !
+
+" Setup autowrite
+set autowrite
 
 "Line numbers and relative line numbers
 set number
@@ -167,6 +177,7 @@ set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 
 noremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+nnoremap <leader>a :Ag
 
 """"""""""""""""""""""""""""""
 "           AIRLINE          "
@@ -192,85 +203,81 @@ endif
 "          DEOPLETE          "
 """"""""""""""""""""""""""""""
 let g:deoplete#enable_at_startup = 1
-set completeopt=longest,menuone,preview
-
-let g:deoplete#omni#functions = {}
-let g:context_filetype#same_filetypes = {}
-let g:context_filetype#same_filetypes.js = 'jsx'
-let g:context_filetype#same_filetypes.jsx = 'js'
-
-let g:deoplete#sources = {}
-let g:deoplete#sources['javascript'] = ['buffer', 'ultisnips', 'ternjs']
-let g:deoplete#sources['javascript.jsx'] = ['buffer', 'ultisnips', 'ternjs']
+"set completeopt=longest,menuone,preview
+let g:deoplete#ignore_sources = {}
+let g:deoplete#ignore_sources._ = ['buffer']
 
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-let g:deoplete#omni#functions.javascript = [
-      \ 'tern#Complete',
-      \ 'jspc#omni'
-      \]
+let g:deoplete#sources = {}
+let g:deoplete#sources#go#gocode_binary =	$GOPATH.'bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#pointer = 1
 
-augroup omnifuncs
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:SuperTabDefaultCompletionType = "<C-n>"
+
+""""""""""""""""""""""""""""""
+"           EMMET            "
+""""""""""""""""""""""""""""""
+let g:user_emmet_settings = {
+      \  'javascript.jsx' : {
+      \      'extends' : 'jsx',
+      \  },
+      \}
+
+""""""""""""""""""""""""""""""
+"           NEOMAKE          "
+""""""""""""""""""""""""""""""
+let g:neomake_open_list = 2
+let g:neomake_list_height = 5
+
+if filereadable($PWD .'/node_modules/.bin/eslint')
+  let g:neomake_jsx_enabled_makers = ['eslint']
+  let g:neomake_jsx_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+  let g:neomake_javascript_enabled_makers = ['eslint']
+  let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+endif
+
+if filereadable($PWD .'node_modules/.bin/tslint')
+  let g:neomake_typescript_enabled_makers = ['tsc', 'tslint']
+  let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/.bin/tslint'
+  let g:neomake_tsx_enabled_makers = ['tsc', 'tslint']
+  let g:neomake_tsx_tslint_exe = $PWD .'/node_modules/.bin/tslint'
+endif
+
+autocmd! BufWritePost * Neomake
+augroup my_neomake_qf
   autocmd!
-  autocmd FileType java setlocal omnifunc=javacomplete#Complete
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-augroup end
+  autocmd QuitPre * if &filetype !=# 'qf' | lclose | endif
+augroup END
 
-  let g:UltiSnipsExpandTrigger="<C-j>"
-  let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
+""""""""""""""""""""""""""""""
+"          NERDTREE          "
+""""""""""""""""""""""""""""""
+"let g:nerdtree_tabs_open_on_console_startup = 1
+let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.git/$', '\.pyc$', '\.emotion\.css$']
+nmap <leader>t :NERDTreeToggle<CR>
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-  """"""""""""""""""""""""""""""
-  "           EMMET            "
-  """"""""""""""""""""""""""""""
-  let g:user_emmet_settings = {
-        \  'javascript.jsx' : {
-        \      'extends' : 'jsx',
-        \  },
-        \}
+""""""""""""""""""""""""""""""
+"       NVIM-TYPESCRIPT      "
+""""""""""""""""""""""""""""""
+let g:nvim_typescript#javascript_support = 1
 
-  """"""""""""""""""""""""""""""
-  "        MULTI-CURSOR        "
-  """"""""""""""""""""""""""""""
-  let g:multi_cursor_use_default_mapping=0
-  let g:multi_cursor_next_key='<C-s>'
-  let g:multi_cursor_prev_key='<C-a>'
-  let g:multi_cursor_skip_key='<C-q>'
-  let g:multi_cursor_quit_key='<Esc>'
-  let g:multi_cursor_start_key='<C-s>'
+""""""""""""""""""""""""""""""
+"           VIM-GO           "
+""""""""""""""""""""""""""""""
+let g:go_fmt_command = "goimports"
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
+let g:go_highlight_types = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_auto_type_info = 1
+set updatetime=100
 
-  """"""""""""""""""""""""""""""
-  "           NEOMAKE          "
-  """"""""""""""""""""""""""""""
-  let g:neomake_open_list = 2
-  let g:neomake_list_height = 5
+au FileType go nmap <leader>gd <Plug>(go-def-vertical)
 
-  if filereadable($PWD .'/node_modules/.bin/eslint')
-    let g:neomake_jsx_enabled_makers = ['eslint']
-    let g:neomake_jsx_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-    let g:neomake_javascript_enabled_makers = ['eslint']
-    let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-  endif
-
-  autocmd! BufWritePost * Neomake
-
-  """"""""""""""""""""""""""""""
-  "          NERDTREE          "
-  """"""""""""""""""""""""""""""
-  let g:nerdtree_tabs_open_on_console_startup = 1
-  let NERDTreeShowHidden=1
-  let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.git/$', '\.pyc$']
-  nmap <leader>t <plug>NERDTreeTabsToggle<CR>
-
-  """"""""""""""""""""""""""""""
-  "            TERN            "
-  """"""""""""""""""""""""""""""
-  let g:tern_request_timeout = 1
-  let g:tern_show_signature_in_pum = '0'
-  let g:tern#filetypes = [ 'javascript', 'jsx', 'javascript.jsx' ]
-  let g:tern#command = ["tern"]
-  let g:tern#arguments = ["--persistent"]
-
-  source ~/.vimrc.overrides
+source ~/.vimrc.overrides

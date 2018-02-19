@@ -5,6 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
+POWERLEVEL9K_MODE='nerdfont-fontconfig'
 ZSH_THEME="powerlevel9k/powerlevel9k"
 DEFAULT_USER="kristenmills"
 
@@ -43,11 +44,7 @@ plugins=(git ruby osx lol gem git-flow git-extras heroku nyan rails rake sublime
 
 source $ZSH/oh-my-zsh.sh
 
-[[ -s "/Users/kristen/.rvm/scripts/rvm" ]] && source "/Users/kristen/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 export GOROOT=$HOME/.go
-export GOARCH=amd
-export GOOS=darwin
 export EDITOR=nvim
 export NODE_PATH="/usr/local/lib/node"
 export NODE_PATH=$NODE_PATH:$HOME/.nvm/versions/node/v0.12.2/lib/node_modules

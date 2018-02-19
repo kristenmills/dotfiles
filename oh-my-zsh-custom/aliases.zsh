@@ -13,7 +13,7 @@ alias mkd='mkdir'
 alias d='diff'
 
 #git things
-#`alias git='hub'
+alias gti='git'
 
 #ls things
 alias ll='ls -l'
