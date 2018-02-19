@@ -1,3 +1,6 @@
 *.pyc
 vim/undo
 vim/plugged
+nvim/undo
+nvim/plugged
+nvim/.netrwhist

@@ -56,7 +56,7 @@ ln -s $dotfiles/oh-my-zsh-custom/* $HOME/.oh-my-zsh/custom
 
 moveAndLink $HOME/.config/powerline $dotfiles/powerline-config
 moveAndLink $HOME/.vim $dotfiles/vim
-moveAndLink $HOME/.config/nvim $dotfile/vim
+moveAndLink $HOME/.config/nvim $dotfiles/nvim
 moveAndLink $HOME/.gitconfig $dotfiles/gitconfig
 moveAndLink $HOME/.gitignore_global $dotfiles/gitignore_global
 moveAndLink $HOME/.tmux.conf $dotfiles/tmux.conf
@@ -77,7 +77,7 @@ else
 fi
 
 # brew install all the things
-brew install python3 autojump python fortune cowsay rbenv ruby-build tmuax
+brew install python3 autojump python fortune cowsay rbenv ruby-build tmux
 brew tap caskroom/fonts
 brew cask install font-firacode-nerd-font
 
@@ -93,7 +93,7 @@ gem install tmuxinator
 
 # Install neovim
 echo "Installing Neovim"
-brew install neovim/neovim/neovim
+brew install neovim
 pip3 install neovim
 
 pip3 install powerline-status

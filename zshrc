@@ -46,8 +46,6 @@ source $ZSH/oh-my-zsh.sh
 
 export GOROOT=$HOME/.go
 export EDITOR=nvim
-export NODE_PATH="/usr/local/lib/node"
-export NODE_PATH=$NODE_PATH:$HOME/.nvm/versions/node/v0.12.2/lib/node_modules
 
 #Customize to your needs...
 export PATH=/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/bin:/usr/local/git/bin:/usr/texbin:$PATH
