@@ -14,6 +14,10 @@ let g:ale_fixers = {
 
 let g:ale_fix_on_save = 1
 
+let g:ale_linters = {
+\   'typescript': ['tslint', 'tsserver', 'typecheck'],
+\}
+
 """"""""""""""""""""""""""""""
 "          BASE16            "
 """"""""""""""""""""""""""""""
@@ -31,6 +35,8 @@ let g:user_emmet_settings = {
       \      'extends' : 'jsx',
       \  },
       \}
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 """"""""""""""""""""""""""""""
 "       NVIM-TYPESCRIPT      "

@@ -35,9 +35,7 @@ Plug 'tpope/vim-vinegar'
 """"""""""""""""""""""""""""""
 "        COMPLETEION         "
 """"""""""""""""""""""""""""""
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'zchee/deoplete-go', { 'do': 'make'}
-"Plug 'zchee/deoplete-jedi'
+Plug 'roxma/nvim-completion-manager', { 'do': 'pip3 install jedi psutil setproctitle' }
 
 """"""""""""""""""""""""""""""
 "            GIT             "
@@ -49,8 +47,8 @@ Plug 'airblade/vim-gitgutter'
 "    SEARCH/FUZZY FINDING    "
 """"""""""""""""""""""""""""""
 Plug 'mileszs/ack.vim'
-"Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ctrlpvim/ctrlp.vim'
 
 """"""""""""""""""""""""""""""
 "          LINTING           "
@@ -60,15 +58,14 @@ Plug 'w0rp/ale'
 """"""""""""""""""""""""""""""
 "          SNIPPETS          "
 """"""""""""""""""""""""""""""
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 """"""""""""""""""""""""""""""
 "          Other             "
 """"""""""""""""""""""""""""""
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'ervandew/supertab'
 Plug 'tpope/vim-abolish'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-repeat'
