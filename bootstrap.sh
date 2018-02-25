@@ -31,6 +31,46 @@ function createOverrides() {
   fi
 }
 
+function brewInstallOrUpgrade() {
+  for pkg in "$@"; do
+    if brew ls --versions "$pkg" >/dev/null; then
+      HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade "$pkg"
+    else
+      HOMEBREW_NO_AUTO_UPDATE=1 brew install "$pkg"
+    fi
+  done
+}
+
+function brewCaskInstallOrUpgrade() {
+  for pkg in "$@"; do
+    if brew ls --versions "$pkg" >/dev/null; then
+      HOMEBREW_NO_AUTO_UPDATE=1 brew cask upgrade "$pkg"
+    else
+      HOMEBREW_NO_AUTO_UPDATE=1 brew cask install "$pkg"
+    fi
+  done
+}
+
+function pipInstallOrUpgrade() {
+  for pkg in "$@"; do
+    if pip3 show "$pkg" >/dev/null; then
+      pip3 install "$pkg" --upgrade
+    else
+      pip3 install "$pkg"
+    fi
+  done
+}
+
+function gemInstallOrUpgrade() {
+  for pkg in "$@"; do
+    if gem list -i "$pkg" >/dev/null; then
+      gem update "$pkg"
+    else
+      gem install "$pkg"
+    fi
+  done
+}
+
 git submodule init
 git submodule update --remote
 
@@ -77,9 +117,9 @@ else
 fi
 
 # brew install all the things
-brew install python3 autojump python fortune cowsay rbenv ruby-build tmux
+brewInstallOrUpgrade python3 autojump python fortune cowsay rbenv ruby-build tmux
 brew tap caskroom/fonts
-brew cask install font-firacode-nerd-font
+brewCaskInstallOrUpgrade font-firacode-nerd-font
 
 # Install Ruby and lolcat
 if [ ! -d $HOME/.rbenv/versions/$ruby_version ]; then
@@ -88,15 +128,12 @@ if [ ! -d $HOME/.rbenv/versions/$ruby_version ]; then
   rbenv global $ruby_version
   eval "$(rbenv init -)"
 fi
-gem install lolcat
-gem install tmuxinator
+gemInstallOrUpgrade lolcat tmuxinator
 
 # Install neovim
 echo "Installing Neovim"
-brew install neovim
-pip3 install neovim
-
-pip3 install powerline-status
+brewInstallOrUpgrade neovim
+pipInstallOrUpgrade neovim powerline-status
 
 # source zshrc and Set base16 theme
 source $HOME/.zshrc

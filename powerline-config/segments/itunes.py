@@ -44,7 +44,6 @@ class iTunesPlayerSegment(PlayerSegment):
             'state': state
         }
 
-
 itunes = with_docstring(iTunesPlayerSegment(),
     ('''Return iTunes now playing information.
 
