@@ -1,8 +1,16 @@
 """"""""""""""""""""""""""""""
+"            ACK             "
+""""""""""""""""""""""""""""""
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+""""""""""""""""""""""""""""""
 "           AIRLINE          "
 """"""""""""""""""""""""""""""
 let g:airline_powerline_fonts = 1
 let g:airline_theme='base16'
+let g:airline#extensions#ale#enabled = 1
 
 """"""""""""""""""""""""""""""
 "            ALE             "
@@ -15,8 +23,21 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 
 let g:ale_linters = {
+\   'javascript': ['eslint'],
 \   'typescript': ['tslint', 'tsserver', 'typecheck'],
+\   'go': ['golint', 'go vet', 'go build'],
 \}
+
+let g:ale_go_gometalinter_options = "--fast"
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 
 """"""""""""""""""""""""""""""
 "          BASE16            "
@@ -28,20 +49,50 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 
 """"""""""""""""""""""""""""""
+"          CTRL-P            "
+""""""""""""""""""""""""""""""
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+""""""""""""""""""""""""""""""
 "           EMMET            "
 """"""""""""""""""""""""""""""
 let g:user_emmet_settings = {
-      \  'javascript.jsx' : {
-      \      'extends' : 'jsx',
-      \  },
-      \}
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
+
+""""""""""""""""""""""""""""""
+"         NEOSNIPPET         "
+""""""""""""""""""""""""""""""
+"imap <c-j>     <Plug>(neosnippet_expand_or_jump)
+"vmap <c-j>     <Plug>(neosnippet_expand_or_jump)
+"inoremap <silent> <c-u> <c-r>=cm#sources#neosnippet#trigger_or_popup("\<Plug>(neosnippet_expand_or_jump)")<cr>
+"vmap <c-u>     <Plug>(neosnippet_expand_target)
+let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
+" optional
+inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+" expand parameters
+let g:neosnippet#enable_completed_snippet=1
+inoremap <expr><CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+imap <expr><Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
+let g:AutoPairsMapCR=0
+imap <expr><CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>\<Plug>AutoPairsReturn")
 
 """"""""""""""""""""""""""""""
 "       NVIM-TYPESCRIPT      "
 """"""""""""""""""""""""""""""
 let g:nvim_typescript#javascript_support = 1
+
+""""""""""""""""""""""""""""""
+"          SUPERTAB          "
+""""""""""""""""""""""""""""""
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 """"""""""""""""""""""""""""""
 "     TRIM WHITESPACE        "
@@ -51,15 +102,28 @@ autocmd BufWritePre * StripWhitespace
 """"""""""""""""""""""""""""""
 "           VIM-GO           "
 """"""""""""""""""""""""""""""
+" auto imports
 let g:go_fmt_command = "goimports"
+
+" real tabs
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
+
+" show  type info in the status line
+let g:go_auto_type_info = 1
+
+" syntax highlighting
 let g:go_highlight_types = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
-let g:go_auto_type_info = 1
 set updatetime=100
 
-au FileType go nmap <leader>gd <Plug>(go-def-vertical)
+au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
+au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
+au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
+au FileType go nmap <leader>gdd :GoDeclsDir<cr>
+
+let g:go_addtags_transform = "snakecase"
+let g:go_snippet_engine = "neosnippet"
 
 """"""""""""""""""""""""""""""
 "       VIM-JSX-PRETTY       "

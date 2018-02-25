@@ -4,17 +4,21 @@ call plug#begin('~/.config/nvim/plugged')
 "         LANGUAGE           "
 """"""""""""""""""""""""""""""
 " Javascript/typescript
-Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'ianks/vim-tsx'
-Plug 'mhartington/nvim-typescript'
+Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
 Plug 'moll/vim-node'
 Plug 'mattn/emmet-vim'
 Plug 'styled-components/vim-styled-components'
+Plug 'gavocanov/vim-js-indent'
 
 " HTML
 Plug 'othree/html5.vim'
+
+" CSS
+Plug 'hail2u/vim-css3-syntax'
 
 " Nginx
 Plug 'vim-scripts/nginx.vim'
@@ -36,6 +40,7 @@ Plug 'tpope/vim-vinegar'
 "        COMPLETEION         "
 """"""""""""""""""""""""""""""
 Plug 'roxma/nvim-completion-manager', { 'do': 'pip3 install jedi psutil setproctitle' }
+Plug 'ervandew/supertab'
 
 """"""""""""""""""""""""""""""
 "            GIT             "
@@ -70,5 +75,7 @@ Plug 'tpope/vim-abolish'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+Plug 'kshenoy/vim-signature'
 
 call plug#end()

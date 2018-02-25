@@ -1,0 +1,28 @@
+global !p
+from vimsnippets import complete
+
+FIELD_TYPES = [
+	'double',
+	'float',
+	'int32',
+	'int64',
+	'uint32',
+	'uint64',
+	'sint32',
+	'sint64',
+	'fixed32',
+	'fixed64',
+	'sfixed32',
+	'sfixed64',
+	'bool',
+	'string',
+	'bytes']
+endglobal
+
+snippet field "field" b
+$1`!p snip.rv = complete(t[1], FIELD_TYPES)` ${2:name} = ${3:1};
+endsnippet
+
+snippet ext "extensions" w
+[(gogoproto.$1) = "${2:value}"]$3
+endsnippet

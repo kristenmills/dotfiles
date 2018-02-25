@@ -6,3 +6,4 @@ rethinkdb_data
 *.swo
 .tmuxinatior.yml
 .tern-port
+NetrwTreeListing *
