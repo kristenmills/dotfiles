@@ -70,5 +70,6 @@ Plug 'tpope/vim-abolish'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'kshenoy/vim-signature'
 
 call plug#end()
