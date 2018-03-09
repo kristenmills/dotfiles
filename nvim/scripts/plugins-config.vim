@@ -25,19 +25,17 @@ let g:ale_fix_on_save = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'typescript': ['tslint', 'tsserver', 'typecheck'],
-\   'go': ['golint', 'go vet', 'go build'],
+\   'go': ['go build'],
 \}
 
 let g:ale_go_gometalinter_options = "--fast"
+let g:ale_lint_delay = 1000;
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
-
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
 
 """"""""""""""""""""""""""""""
 "          BASE16            "
@@ -65,12 +63,19 @@ let g:user_emmet_settings = {
 \}
 
 """"""""""""""""""""""""""""""
-"         NEOSNIPPET         "
+"          NERDTREE          "
 """"""""""""""""""""""""""""""
-"imap <c-j>     <Plug>(neosnippet_expand_or_jump)
-"vmap <c-j>     <Plug>(neosnippet_expand_or_jump)
-"inoremap <silent> <c-u> <c-r>=cm#sources#neosnippet#trigger_or_popup("\<Plug>(neosnippet_expand_or_jump)")<cr>
-"vmap <c-u>     <Plug>(neosnippet_expand_target)
+let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.DS_Store$', '\.swp$', '\.git/$', '\.pyc$', '\.emotion\.css$']
+nmap <leader>t :NERDTreeToggle<CR>
+nmap gt :NERDTreeFocus<CR>
+nmap gtf :NERDTreeFind<CR>
+autocmd vimenter * NERDTreeToggle
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+""""""""""""""""""""""""""""""
+"   NVIM-COMPLETION_MANAGER  "
+""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
 let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
@@ -78,11 +83,11 @@ let g:UltiSnipsRemoveSelectModeMappings = 0
 " optional
 inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
 " expand parameters
-let g:neosnippet#enable_completed_snippet=1
 inoremap <expr><CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 imap <expr><Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
 let g:AutoPairsMapCR=0
 imap <expr><CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>\<Plug>AutoPairsReturn")
+let g:cm_refresh_length = [[1,4],[7,2]]
 
 """"""""""""""""""""""""""""""
 "       NVIM-TYPESCRIPT      "
@@ -117,10 +122,10 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 set updatetime=100
 
-au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
-au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
-au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
-au FileType go nmap <leader>gdd :GoDeclsDir<cr>
+au FileType go nmap gdv <Plug>(go-def-vertical)
+au Filetype go nmap gav <Plug>(go-alternate-vertical)
+au Filetype go nmap ga <Plug>(go-alternate-edit)
+au FileType go nmap gdd :GoDeclsDir<cr>
 
 let g:go_addtags_transform = "snakecase"
 let g:go_snippet_engine = "neosnippet"

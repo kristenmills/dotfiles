@@ -1,0 +1,24 @@
+# Import
+snippet imp
+import ${1:foo} from '${2:bar}'
+endsnippet
+
+snippet mstp
+function mapStateToProps(${1:state}${2:, ownProps}) {
+	return {
+		${3}
+	};
+}
+endsnippet
+
+snippet mdtp
+function mapDispatchToProps(dispatch${1:, ownProps}) {
+	return {
+		${2}
+	};
+}
+endsnippet
+
+snippet conn
+connect(${1:mapStateToProps}${2:, mapDispatchToProps}${4})(${3:Component});
+endsnippet

@@ -4,15 +4,19 @@ call plug#begin('~/.config/nvim/plugged')
 "         LANGUAGE           "
 """"""""""""""""""""""""""""""
 " Javascript/typescript
-Plug 'othree/yajs.vim'
+"Plug 'othree/yajs.vim'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mxw/vim-jsx'
+Plug 'leafgarland/typescript-vim'
+"Plug 'HerringtonDarkholme/yats.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'ianks/vim-tsx'
 Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
 Plug 'moll/vim-node'
 Plug 'mattn/emmet-vim'
 Plug 'styled-components/vim-styled-components'
-Plug 'gavocanov/vim-js-indent'
+"Plug 'gavocanov/vim-js-indent'
+"Plug 'othree/es.next.syntax.vim'
 
 " HTML
 Plug 'othree/html5.vim'
@@ -35,6 +39,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-vinegar'
+Plug 'scrooloose/nerdtree'
 
 """"""""""""""""""""""""""""""
 "        COMPLETEION         "
