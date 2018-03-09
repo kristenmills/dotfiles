@@ -29,7 +29,7 @@ let g:ale_linters = {
 \}
 
 let g:ale_go_gometalinter_options = "--fast"
-let g:ale_lint_delay = 1000;
+let g:ale_lint_delay = 1000
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
