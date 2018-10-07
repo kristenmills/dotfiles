@@ -5,13 +5,13 @@ call plug#begin('~/.config/nvim/plugged')
 """"""""""""""""""""""""""""""
 " Javascript/typescript
 "Plug 'othree/yajs.vim'
-Plug 'maxmellon/vim-jsx-pretty'
+"Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
 "Plug 'HerringtonDarkholme/yats.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'ianks/vim-tsx'
-Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 Plug 'moll/vim-node'
 Plug 'mattn/emmet-vim'
 Plug 'styled-components/vim-styled-components'
@@ -40,11 +40,15 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-vinegar'
 Plug 'scrooloose/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 """"""""""""""""""""""""""""""
 "        COMPLETEION         "
 """"""""""""""""""""""""""""""
 Plug 'roxma/nvim-completion-manager', { 'do': 'pip3 install jedi psutil setproctitle' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'zchee/deoplete-go', { 'do': 'make'}
+"Plug 'artur-shaik/vim-javacomplete2'
 Plug 'ervandew/supertab'
 
 """"""""""""""""""""""""""""""

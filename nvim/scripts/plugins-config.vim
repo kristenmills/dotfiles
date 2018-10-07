@@ -17,14 +17,15 @@ let g:airline#extensions#ale#enabled = 1
 """"""""""""""""""""""""""""""
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
-\   'typescript': ['tslint'],
+\   'typescript': ['eslint'],
+\   'java': ['google-java-format'],
 \}
 
 let g:ale_fix_on_save = 1
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'typescript': ['tslint', 'tsserver', 'typecheck'],
+\   'typescript': ['eslint', 'tsserver'],
 \   'go': ['go build'],
 \}
 
