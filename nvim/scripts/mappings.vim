@@ -41,3 +41,6 @@ nnoremap ≈ <C-x>
 
 " open a vertical slpit
 nnoremap <leader>v :vsplit<CR>
+
+" split on commas within a block
+map <leader>bp f}%cSBBj:s/,/,\r/g<CR>$xa,<ESC>viB==

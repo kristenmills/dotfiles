@@ -30,3 +30,7 @@ endsnippet
 snippet jext "json tag extension" w
 [(gogoproto.jsontag) = "${1:value}"]$2
 endsnippet
+
+snippet dbext "db tag extension" w
+[(gogoproto.moretags) = "db:\"${1:value}\""]$2
+endsnippet
