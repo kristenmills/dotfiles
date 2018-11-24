@@ -75,12 +75,11 @@ autocmd vimenter * NERDTreeToggle
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """"""""""""""""""""""""""""""
-"   NVIM-COMPLETION_MANAGER  "
+"           NCM2             "
 """"""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
+"autocmd BufEnter * call ncm2#enable_for_buffer()
+"set completeopt=noinsert,menuone,noselect
+"set shortmess+=c
 " optional
 inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
 " expand parameters
@@ -104,6 +103,15 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 "     TRIM WHITESPACE        "
 """"""""""""""""""""""""""""""
 autocmd BufWritePre * StripWhitespace
+
+
+""""""""""""""""""""""""""""""
+"         ULTISNIPS          "
+""""""""""""""""""""""""""""""
+let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 
 """"""""""""""""""""""""""""""
 "           VIM-GO           "

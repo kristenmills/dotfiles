@@ -45,10 +45,17 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 """"""""""""""""""""""""""""""
 "        COMPLETEION         "
 """"""""""""""""""""""""""""""
-Plug 'roxma/nvim-completion-manager', { 'do': 'pip3 install jedi psutil setproctitle' }
+Plug 'kristenmills/nvim-completion-manager', { 'do': 'pip3 install jedi psutil setproctitle' }
+"Plug 'ncm2/ncm2'
+"Plug 'ncm2/ncm2-ultisnips'
+"Plug 'ncm2/ncm2-bufword'
+"Plug 'ncm2/ncm2-go'
+"Plug 'ncm2/ncm2-jedi'
+"Plug 'roxma/nvim-yarp'
+"Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
+"Plug 'artur-shaik/vim-javacomplete2', {'for': ['java', 'jsp']}
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'zchee/deoplete-go', { 'do': 'make'}
-"Plug 'artur-shaik/vim-javacomplete2'
 Plug 'ervandew/supertab'
 
 """"""""""""""""""""""""""""""

@@ -44,11 +44,11 @@ plugins=(git ruby osx lol gem git-flow git-extras heroku nyan rails rake sublime
 
 source $ZSH/oh-my-zsh.sh
 
-export GOROOT=$HOME/.go
+export GOROOT=/usr/local/bin/go
 export EDITOR=nvim
 
 #Customize to your needs...
-export PATH=/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/bin:/usr/local/git/bin:/usr/texbin:$PATH
+export PATH=/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/bin:/usr/local/git/bin:/usr/texbin:/usr/local/sbin:$PATH
 
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 
@@ -76,5 +76,6 @@ source $HOME/.zshrc.overrides
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH"
 
 fortune | cowsay -f stegosaurus | lolcat
