@@ -1,7 +1,8 @@
 {
 	"common": {
 		"term_truecolor": false,
-		"paths": ["~/.config/powerline/"]
+		"paths": ["~/.config/powerline/"],
+    "log_file": "~/powerline.log"
 	},
 	"ext": {
 		"ipython": {

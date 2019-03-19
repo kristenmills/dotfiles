@@ -40,10 +40,10 @@ alias jc='javac'
 alias jca='javac *.java'
 alias jrm='rm *.class'
 alias rb='ruby'
-alias py='python3'
-alias python='python3'
+alias py='python2'
+alias python='python2'
 alias py2='python2'
-alias pip='pip3'
+alias pip='pip2'
 alias spl='make -f /usr/spl/Makefile'
 
 #rails things

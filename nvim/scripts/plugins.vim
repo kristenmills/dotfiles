@@ -30,6 +30,12 @@ Plug 'vim-scripts/nginx.vim'
 " Go
 Plug 'fatih/vim-go'
 
+" Swift
+Plug 'keith/swift.vim'
+
+"Graphql
+Plug 'jparise/vim-graphql'
+
 """"""""""""""""""""""""""""""
 "             UI             "
 """"""""""""""""""""""""""""""
@@ -45,7 +51,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 """"""""""""""""""""""""""""""
 "        COMPLETEION         "
 """"""""""""""""""""""""""""""
-Plug 'kristenmills/nvim-completion-manager', { 'do': 'pip3 install jedi psutil setproctitle' }
+"Plug 'kristenmills/nvim-completion-manager', { 'do': 'pip3 install jedi psutil setproctitle' }
 "Plug 'ncm2/ncm2'
 "Plug 'ncm2/ncm2-ultisnips'
 "Plug 'ncm2/ncm2-bufword'
@@ -54,8 +60,9 @@ Plug 'kristenmills/nvim-completion-manager', { 'do': 'pip3 install jedi psutil s
 "Plug 'roxma/nvim-yarp'
 "Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
 "Plug 'artur-shaik/vim-javacomplete2', {'for': ['java', 'jsp']}
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'zchee/deoplete-jedi'
 Plug 'ervandew/supertab'
 
 """"""""""""""""""""""""""""""
@@ -67,9 +74,11 @@ Plug 'airblade/vim-gitgutter'
 """"""""""""""""""""""""""""""
 "    SEARCH/FUZZY FINDING    "
 """"""""""""""""""""""""""""""
-Plug 'mileszs/ack.vim'
+"Plug 'mileszs/ack.vim'
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 """"""""""""""""""""""""""""""
 "          LINTING           "

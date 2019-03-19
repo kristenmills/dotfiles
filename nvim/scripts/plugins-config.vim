@@ -27,6 +27,8 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'typescript': ['eslint', 'tsserver'],
 \   'go': ['go build'],
+\   'yaml': ['yamllint'],
+\   'graphql': ['gqlint'],
 \}
 
 let g:ale_go_gometalinter_options = "--fast"
@@ -46,6 +48,21 @@ if filereadable(expand("~/.vimrc_background"))
   set background=dark
   source ~/.vimrc_background
 endif
+
+
+""""""""""""""""""""""""""""""
+"            FZF             "
+""""""""""""""""""""""""""""""
+nmap <C-p> :FZF<CR>
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%an %h%d %s %C(black)%C(bold)%cr"'
+""""""""""""""""""""""""""""""
+"         GIT GUTTER         "
+""""""""""""""""""""""""""""""
+" Swapping these because it have <leader>h as a prefix makes
+" pan switching slow
+nmap <Leader>sh <Plug>GitGutterStageHunk
+nmap <Leader>uh <Plug>GitGutterUndoHunk
+nmap <Leader>ph <Plug>GitGutterPreviewHunk
 
 """"""""""""""""""""""""""""""
 "          CTRL-P            "
@@ -77,17 +94,18 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 """"""""""""""""""""""""""""""
 "           NCM2             "
 """"""""""""""""""""""""""""""
+let g:deoplete#enable_at_startup = 1
 "autocmd BufEnter * call ncm2#enable_for_buffer()
 "set completeopt=noinsert,menuone,noselect
 "set shortmess+=c
-" optional
-inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
-" expand parameters
-inoremap <expr><CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-imap <expr><Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
-let g:AutoPairsMapCR=0
-imap <expr><CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>\<Plug>AutoPairsReturn")
-let g:cm_refresh_length = [[1,4],[7,2]]
+"" optional
+"inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+"" expand parameters
+"inoremap <expr><CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+"imap <expr><Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
+"let g:AutoPairsMapCR=0
+"imap <expr><CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>\<Plug>AutoPairsReturn")
+"let g:cm_refresh_length = [[1,4],[7,2]]
 
 """"""""""""""""""""""""""""""
 "       NVIM-TYPESCRIPT      "

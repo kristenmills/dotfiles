@@ -79,3 +79,5 @@ export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH"
 
 fortune | cowsay -f stegosaurus | lolcat
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
