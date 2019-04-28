@@ -2,12 +2,9 @@ DOTFILES := $(shell pwd)
 SUBMODULES := oh-my-zsh-custom/themes/powerlevel9k
 MKDIR_TARGETS := $(addprefix $(HOME)/,.config development) $(DOTFILES)/vim/undo
 
-bootstrap: setup install-zsh git-install symlinks
+include scripts/*.mk
 
-include scripts/symlinks.mk
-include scripts/git-install.mk
-include scripts/overrides.mk
-include scripts/zsh.mk
+bootstrap: setup install-zsh git-install symlinks brew-install
 
 setup: overrides | $(SUBMODULES) $(MKDIR_TARGETS)
 
@@ -21,3 +18,5 @@ $(MKDIR_TARGETS):
 $(HOME)/.config/%: | $(HOME)/.config
 
 .PHONY: bootstrap setup
+
+default: bootstrap
