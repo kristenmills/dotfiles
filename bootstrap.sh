@@ -116,8 +116,10 @@ else
   brew update
 fi
 
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+
 # brew install all the things
-brewInstallOrUpgrade python3 autojump python fortune cowsay rbenv ruby-build tmux
+brewInstallOrUpgrade python3 autojump python fortune cowsay rbenv ruby-build tmux rg fzf
 brew tap caskroom/fonts
 brewCaskInstallOrUpgrade font-firacode-nerd-font
 

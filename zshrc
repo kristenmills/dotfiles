@@ -40,7 +40,7 @@ CC=clang
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby osx lol gem git-flow git-extras heroku nyan rails rake sublime)
+plugins=(git ruby osx lol gem git-flow git-extras heroku  rake sublime)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -60,6 +60,7 @@ export PATH="$PATH:/Library/TeX/texbin/"
 
 ### Added by the Heroku Toolbelt
 export PATH=$PATH:/usr/local/heroku/bin
+export CGO_CFLAGS_ALLOW="-Xpreprocessor"
 
 ### Autojump
 [[ -s `brew --prefix`/etc/autojump.sh ]] && source `brew --prefix`/etc/autojump.sh
@@ -77,6 +78,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+export PKG_CONFIG_PATH=/usr/local/Cellar/libffi/3.2.1/lib/pkgconfig/
 
 fortune | cowsay -f stegosaurus | lolcat
 
