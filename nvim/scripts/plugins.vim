@@ -14,7 +14,7 @@ Plug 'ianks/vim-tsx'
 Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 Plug 'moll/vim-node'
 Plug 'mattn/emmet-vim'
-Plug 'styled-components/vim-styled-components'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 "Plug 'gavocanov/vim-js-indent'
 "Plug 'othree/es.next.syntax.vim'
 
@@ -35,6 +35,9 @@ Plug 'keith/swift.vim'
 
 "Graphql
 Plug 'jparise/vim-graphql'
+
+" Jsonnet
+Plug 'google/vim-jsonnet'
 
 """"""""""""""""""""""""""""""
 "             UI             "
