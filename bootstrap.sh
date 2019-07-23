@@ -86,8 +86,9 @@ createOverrides $HOME/.vimrc \"
 
 # Install Oh-my-zsh
 if [ ! -d $HOME/.oh-my-zsh ]; then
-  echo "Installing Oh My Zsh. Run exit after it switches your shell"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  echo "Installing Oh My Zsh."
+  curl -o install.sh https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+  RUNZSH=no sh install.sh
 fi
 
 # link all the things
@@ -119,7 +120,7 @@ fi
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 # brew install all the things
-brewInstallOrUpgrade python3 autojump python fortune cowsay rbenv ruby-build tmux rg fzf
+brewInstallOrUpgrade python3 autojump python fortune cowsay rbenv ruby-build tmux rg fzf go
 brew tap caskroom/fonts
 brewCaskInstallOrUpgrade font-firacode-nerd-font
 

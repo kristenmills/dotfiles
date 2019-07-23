@@ -83,7 +83,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 export PKG_CONFIG_PATH=/usr/local/Cellar/libffi/3.2.1/lib/pkgconfig/
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 fortune | cowsay -f stegosaurus | lolcat
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
