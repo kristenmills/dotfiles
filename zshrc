@@ -44,7 +44,6 @@ plugins=(git ruby osx lol gem git-flow git-extras heroku  rake sublime)
 
 source $ZSH/oh-my-zsh.sh
 
-export GOROOT=/usr/local/bin/go
 export EDITOR=nvim
 
 #Customize to your needs...
@@ -52,7 +51,7 @@ export PATH=/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/bin:/usr/local/git/bin:/usr
 
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 
-export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/2.7/bin:$HOME/.go/:/Applications/Blender/blender.app/Contents/MacOS
+export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/2.7/bin:$HOME/.go/:/Applications/Blender/blender.app/Contents/MacOS:$HOME/Library/Python/3.7/bin
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
@@ -69,8 +68,8 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # Base16 Shell
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+#BASE16_SHELL=$HOME/.config/base16-shell/
+#[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 source $HOME/.zshrc.overrides
 
@@ -86,4 +85,8 @@ export PKG_CONFIG_PATH=/usr/local/Cellar/libffi/3.2.1/lib/pkgconfig/
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 fortune | cowsay -f stegosaurus | lolcat
+
+alias vim='nvim'
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

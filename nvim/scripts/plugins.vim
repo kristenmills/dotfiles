@@ -5,18 +5,20 @@ call plug#begin('~/.config/nvim/plugged')
 """"""""""""""""""""""""""""""
 " Javascript/typescript
 "Plug 'othree/yajs.vim'
-"Plug 'maxmellon/vim-jsx-pretty'
-Plug 'mxw/vim-jsx'
-Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'soywod/typescript.vim'
+"Plug 'mxw/vim-jsx'
+"Plug 'leafgarland/typescript-vim'
 "Plug 'HerringtonDarkholme/yats.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'ianks/vim-tsx'
 Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 Plug 'moll/vim-node'
 Plug 'mattn/emmet-vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-"Plug 'gavocanov/vim-js-indent'
 "Plug 'othree/es.next.syntax.vim'
+Plug 'cocopon/colorswatch.vim'
+Plug 'mhartington/oceanic-next'
+Plug 'cocopon/inspecthi.vim'
 
 " HTML
 Plug 'othree/html5.vim'
@@ -28,7 +30,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'vim-scripts/nginx.vim'
 
 " Go
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 " Swift
 Plug 'keith/swift.vim'
@@ -42,6 +44,7 @@ Plug 'google/vim-jsonnet'
 """"""""""""""""""""""""""""""
 "             UI             "
 """"""""""""""""""""""""""""""
+Plug 'trevordmiller/nova-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

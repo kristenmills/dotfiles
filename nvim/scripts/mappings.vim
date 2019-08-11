@@ -22,6 +22,7 @@ nnoremap <leader>l <C-w><C-l>
 
 " gf mappings
 nmap <leader>gf <C-w>gf
+nmap gfs :vertical :wincmd f<CR>
 
 nnoremap gy ggyG
 nnoremap <leader>g gg=G
@@ -44,3 +45,10 @@ nnoremap <leader>v :vsplit<CR>
 
 " split on commas within a block
 map <leader>bp f}%cSBBj:s/,/,\r/g<CR>$xa,<ESC>viB==
+
+" terminal mappings
+tnoremap <Esc><Esc> <C-\><C-n>
+nnoremap <leader>tl <C-W><C-v> :terminal<cr>
+nnoremap <leader>tj <C-W><C-s> :terminal<cr>
+nnoremap <silent> <leader>tn :tabnew <bar> :terminal<cr>
+nnoremap <leader>tt :terminal<cr>

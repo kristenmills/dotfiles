@@ -1,3 +1,4 @@
+let g:javascript_plugin_flow = 1
 """"""""""""""""""""""""""""""
 "            ACK             "
 """"""""""""""""""""""""""""""
@@ -9,7 +10,7 @@ endif
 "           AIRLINE          "
 """"""""""""""""""""""""""""""
 let g:airline_powerline_fonts = 1
-let g:airline_theme='base16'
+let g:airline_theme='nova'
 let g:airline#extensions#ale#enabled = 1
 
 """"""""""""""""""""""""""""""
@@ -43,12 +44,13 @@ let g:ale_sign_warning = '⚠'
 """"""""""""""""""""""""""""""
 "          BASE16            "
 """"""""""""""""""""""""""""""
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  set background=dark
-  source ~/.vimrc_background
-endif
+"if filereadable(expand("~/.vimrc_background"))
+  "let base16colorspace=256
+  "set background=dark
+  "source ~/.vimrc_background
+"endif
 
+let g:yats_host_keyword=1
 
 """"""""""""""""""""""""""""""
 "            FZF             "
@@ -111,6 +113,7 @@ let g:deoplete#enable_at_startup = 1
 "       NVIM-TYPESCRIPT      "
 """"""""""""""""""""""""""""""
 let g:nvim_typescript#javascript_support = 1
+let g:yats_host_keyword = 1
 
 """"""""""""""""""""""""""""""
 "          SUPERTAB          "
@@ -146,7 +149,7 @@ let g:go_auto_type_info = 1
 " syntax highlighting
 let g:go_highlight_types = 1
 let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
+let g:go_highlight_function_calls = 1
 set updatetime=100
 
 au FileType go nmap gdv <Plug>(go-def-vertical)

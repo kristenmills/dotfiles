@@ -2,8 +2,10 @@
 set laststatus=2
 
 "Syntax highlighting and formatting
-syntax on
+syntax enable
+"set background=dark
 filetype plugin indent on
+set termguicolors
 
 " Setup autoread
 set autoread
@@ -17,7 +19,7 @@ set number
 set relativenumber
 
 " Highlight current line
-set cursorline
+"set cursorline
 
 " Highlight search matches
 set hlsearch
@@ -56,3 +58,13 @@ set clipboard=unnamed
 
 "netrw file explorer
 let g:netrw_liststyle = 3
+
+function! MyHighlights() abort
+  highlight NERDTreeFile cterm=NONE ctermbg=NONE guifg=#c5d4dd guibg=NONE
+endfunction
+
+augroup MyColors
+  autocmd!
+  autocmd ColorScheme * call MyHighlights()
+augroup END
+colorscheme nova
