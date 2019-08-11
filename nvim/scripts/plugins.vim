@@ -44,15 +44,15 @@ Plug 'google/vim-jsonnet'
 """"""""""""""""""""""""""""""
 "             UI             "
 """"""""""""""""""""""""""""""
-Plug 'trevordmiller/nova-vim'
 Plug 'chriskempson/base16-vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tpope/vim-vinegar'
 Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-vinegar'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'trevordmiller/nova-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 """"""""""""""""""""""""""""""
 "        COMPLETEION         "
@@ -63,13 +63,16 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "Plug 'ncm2/ncm2-bufword'
 "Plug 'ncm2/ncm2-go'
 "Plug 'ncm2/ncm2-jedi'
-"Plug 'roxma/nvim-yarp'
 "Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
 "Plug 'artur-shaik/vim-javacomplete2', {'for': ['java', 'jsp']}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'zchee/deoplete-jedi'
-Plug 'ervandew/supertab'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'zchee/deoplete-go', { 'do': 'make'}
+"Plug 'zchee/deoplete-jedi'
+Plug 'neoclide/coc.nvim', {'do': './install.sh'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-ultisnips', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 
 """"""""""""""""""""""""""""""
 "            GIT             "

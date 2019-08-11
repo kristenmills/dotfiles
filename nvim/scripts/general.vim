@@ -3,7 +3,6 @@ set laststatus=2
 
 "Syntax highlighting and formatting
 syntax enable
-"set background=dark
 filetype plugin indent on
 set termguicolors
 
@@ -36,6 +35,20 @@ set backspace=indent,eol,start
 "Line number column number etc
 set ruler
 
+" set show matching parenthesis
+set showmatch
+
+" ignore case if search pattern is all lowercase, case-sensitive otherwise
+set ignorecase
+set smartcase
+
+" autoindent always on
+set autoindent
+set copyindent
+
+" hides instead of closes buffers
+set hidden
+
 "Code folding settings
 set foldmethod=indent
 set foldlevelstart=99
@@ -59,6 +72,13 @@ set clipboard=unnamed
 "netrw file explorer
 let g:netrw_liststyle = 3
 
+" Better display for messages
+set cmdheight=2
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" fix nerd tree highlighting
 function! MyHighlights() abort
   highlight NERDTreeFile cterm=NONE ctermbg=NONE guifg=#c5d4dd guibg=NONE
 endfunction
@@ -67,4 +87,5 @@ augroup MyColors
   autocmd!
   autocmd ColorScheme * call MyHighlights()
 augroup END
+
 colorscheme nova

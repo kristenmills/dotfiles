@@ -35,28 +35,23 @@ let g:ale_linters = {
 let g:ale_go_gometalinter_options = "--fast"
 let g:ale_lint_delay = 1000
 
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+"nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+"nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 
 """"""""""""""""""""""""""""""
-"          BASE16            "
+"           DENITE           "
 """"""""""""""""""""""""""""""
-"if filereadable(expand("~/.vimrc_background"))
-  "let base16colorspace=256
-  "set background=dark
-  "source ~/.vimrc_background
-"endif
-
-let g:yats_host_keyword=1
+let g:denite_custom_menus = {}
 
 """"""""""""""""""""""""""""""
 "            FZF             "
 """"""""""""""""""""""""""""""
 nmap <C-p> :FZF<CR>
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%an %h%d %s %C(black)%C(bold)%cr"'
+
 """"""""""""""""""""""""""""""
 "         GIT GUTTER         "
 """"""""""""""""""""""""""""""
@@ -108,6 +103,30 @@ let g:deoplete#enable_at_startup = 1
 "let g:AutoPairsMapCR=0
 "imap <expr><CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>\<Plug>AutoPairsReturn")
 "let g:cm_refresh_length = [[1,4],[7,2]]
+"
+""""""""""""""""""""""""""""""
+"            COC             "
+""""""""""""""""""""""""""""""
+" Use csr to confirm completion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Close preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
+nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
 
 """"""""""""""""""""""""""""""
 "       NVIM-TYPESCRIPT      "

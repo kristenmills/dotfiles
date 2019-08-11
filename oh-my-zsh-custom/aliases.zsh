@@ -1,6 +1,3 @@
-#bower things
-alias bower='noglob bower'
-
 #chmod things
 alias ch='chmod'
 alias chx='chmod +x'
@@ -26,32 +23,16 @@ alias lt='ls -ltr'         # sort by date, most recent last
 alias lm='ls -al |more'    # pipe through
 alias lr='ls -lR'          # recursive ls
 
-#mongo things
-alias mongostart='launchctl start homebrew.mxcl.mongodb'
-alias mongostop='launchctl stop homebrew.mxcl.mongodb'
-
 #node things
 alias npm-exec='PATH=$(npm bin):$PATH'
 
 #programming languages
 alias love='/Applications/love.app/Contents/MacOS/love'
-alias ja='java'
-alias jc='javac'
-alias jca='javac *.java'
-alias jrm='rm *.class'
-alias rb='ruby'
 alias py='python2'
 alias python='python2'
 alias py2='python2'
 alias pip='pip2'
 alias spl='make -f /usr/spl/Makefile'
-
-#rails things
-alias rsp='rails s puma'
-alias rake='bundle exec rake'
-
-alias rethinkdb.start='launchctl load /usr/local/opt/rethinkdb/homebrew.mxcl.rethinkdb.plist'
-alias rethinkdb.stop='launchctl unload /usr/local/opt/rethinkdb/homebrew.mxcl.rethinkdb.plist'
 
 #safety with kristen
 alias rm='rm -i'
@@ -60,6 +41,7 @@ alias mv='mv -i'
 
 #vim things
 alias vd='vimdiff'
+alias vim='nvim'
 
 #wget things
 alias wg='wget'
