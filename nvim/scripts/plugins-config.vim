@@ -35,11 +35,19 @@ let g:ale_linters = {
 let g:ale_go_gometalinter_options = "--fast"
 let g:ale_lint_delay = 1000
 
-"nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-"nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
+
+
+""""""""""""""""""""""""""""""
+"         AUTO-PAIRS         "
+""""""""""""""""""""""""""""""
+" disable auto map CR so it doesn't interfere with snippet completion.
+" This behavior is handled in coc.nvim config
+let g:AutoPairsMapCR = 0
 
 """"""""""""""""""""""""""""""
 "           DENITE           "
@@ -91,10 +99,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 """"""""""""""""""""""""""""""
 "           NCM2             "
 """"""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 "autocmd BufEnter * call ncm2#enable_for_buffer()
 "set completeopt=noinsert,menuone,noselect
-"set shortmess+=c
 "" optional
 "inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
 "" expand parameters
@@ -108,7 +115,10 @@ let g:deoplete#enable_at_startup = 1
 "            COC             "
 """"""""""""""""""""""""""""""
 " Use csr to confirm completion
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <cr>
+  \ pumvisible() ? coc#_select_confirm() :
+  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+  \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<c-r>=AutoPairsReturn()\<CR>"
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -116,22 +126,35 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
-nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
+nmap <silent> ]k <Plug>(coc-diagnostic-prev)
+nmap <silent> ]j <Plug>(coc-diagnostic-next)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 
 """"""""""""""""""""""""""""""
 "       NVIM-TYPESCRIPT      "
 """"""""""""""""""""""""""""""
 let g:nvim_typescript#javascript_support = 1
+let g:nvim_typescript#diagnostics_enable =0
 let g:yats_host_keyword = 1
 
 """"""""""""""""""""""""""""""
@@ -183,3 +206,8 @@ let g:go_snippet_engine = "neosnippet"
 "       VIM-JSX-PRETTY       "
 """"""""""""""""""""""""""""""
 let g:vim_jsx_pretty_colorful_config = 1
+
+""""""""""""""""""""""""""""""
+"         VIM-SCALA          "
+""""""""""""""""""""""""""""""
+au BufRead,BufNewFile *.sbt set filetype=scala
