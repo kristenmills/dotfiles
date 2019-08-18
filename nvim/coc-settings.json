@@ -9,8 +9,13 @@
     },
    "metals": {
       "command": "metals-vim",
-      "rootPatterns": ["build.sbt"],
-      "filetypes": ["scala", "sbt"]
+      "rootPatterns": ["build.sbt", "build.gradle.kts"],
+      "filetypes": ["scala", "sbt", "kts", "java"],
+      "settings": {
+        "metals": {
+          "gradle-script": "/Users/kristenmills/postmates/buyer-backend/gradlew"
+        }
+      }
     }
   },
   "tsserver.npm": "/Users/kristenmills/.nvm/versions/node/v12.6.0/bin/yarn",

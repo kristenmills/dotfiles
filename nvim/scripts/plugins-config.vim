@@ -1,4 +1,5 @@
 let g:javascript_plugin_flow = 1
+let g:polyglot_disabled = ['typescript', 'tsx']
 """"""""""""""""""""""""""""""
 "            ACK             "
 """"""""""""""""""""""""""""""
@@ -20,6 +21,8 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'typescript': ['eslint'],
 \   'java': ['google-java-format'],
+\   'scala': ['scalafmt'],
+\   'go': ['gofmt'],
 \}
 
 let g:ale_fix_on_save = 1
