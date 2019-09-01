@@ -22,7 +22,7 @@ let g:ale_fixers = {
 \   'typescript': ['eslint'],
 \   'java': ['google-java-format'],
 \   'scala': ['scalafmt'],
-\   'go': ['gofmt'],
+\   'go': ['goimports'],
 \}
 
 let g:ale_fix_on_save = 1
@@ -214,3 +214,9 @@ let g:vim_jsx_pretty_colorful_config = 1
 "         VIM-SCALA          "
 """"""""""""""""""""""""""""""
 au BufRead,BufNewFile *.sbt set filetype=scala
+
+""""""""""""""""""""""""""""""
+"          VIM-WIKI          "
+""""""""""""""""""""""""""""""
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]

@@ -16,6 +16,12 @@
           "gradle-script": "/Users/kristenmills/postmates/buyer-backend/gradlew"
         }
       }
+    },
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": ["terraform"],
+      "initializationOptions": {}
+
     }
   },
   "tsserver.npm": "/Users/kristenmills/.nvm/versions/node/v12.6.0/bin/yarn",

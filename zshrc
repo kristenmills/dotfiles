@@ -87,5 +87,5 @@ alias vim='nvim'
 
 fortune | cowsay -f stegosaurus | lolcat
 
-
+set -o vi
 

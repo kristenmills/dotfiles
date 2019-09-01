@@ -1,1 +1,0 @@
-autocmd vimenter * NERDTreeToggle

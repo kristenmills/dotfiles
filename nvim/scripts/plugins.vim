@@ -17,10 +17,13 @@ Plug 'jparise/vim-graphql'
 
 " Jsonnet
 Plug 'google/vim-jsonnet'
+
 Plug 'sheerun/vim-polyglot'
 
+" Go
+Plug 'fatih/vim-go'
 
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""
 "             UI             "
 """"""""""""""""""""""""""""""
 Plug 'chriskempson/base16-vim'
@@ -54,7 +57,7 @@ Plug 'airblade/vim-gitgutter'
 """"""""""""""""""""""""""""""
 "    SEARCH/FUZZY FINDING    "
 """"""""""""""""""""""""""""""
-"Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
@@ -80,5 +83,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'kshenoy/vim-signature'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
