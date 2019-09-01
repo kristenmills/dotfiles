@@ -1,5 +1,6 @@
 {
   "codeLens.enable": true,
+  "diagnostic.displayByAle": true,
   "diagnostic.errorSign": "✖",
   "languageserver": {
     "golang": {
@@ -13,7 +14,6 @@
       "filetypes": ["scala", "sbt", "kts", "java"],
       "settings": {
         "metals": {
-          "gradle-script": "/Users/kristenmills/postmates/buyer-backend/gradlew"
         }
       }
     },
@@ -25,5 +25,6 @@
     }
   },
   "tsserver.npm": "/Users/kristenmills/.nvm/versions/node/v12.6.0/bin/yarn",
+  "snippets.userSnippetsDirectory": "~/.config/nvim/UltiSnips/",
   "tsserver.log": "verbose"
 }

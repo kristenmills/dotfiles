@@ -29,7 +29,7 @@ let g:ale_fix_on_save = 1
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'typescript': ['eslint', 'tsserver'],
+\   'typescript': ['eslint'],
 \   'go': ['go build'],
 \   'yaml': ['yamllint'],
 \   'graphql': ['gqlint'],
@@ -100,21 +100,6 @@ autocmd vimenter * NERDTreeToggle
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """"""""""""""""""""""""""""""
-"           NCM2             "
-""""""""""""""""""""""""""""""
-"let g:deoplete#enable_at_startup = 1
-"autocmd BufEnter * call ncm2#enable_for_buffer()
-"set completeopt=noinsert,menuone,noselect
-"" optional
-"inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
-"" expand parameters
-"inoremap <expr><CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-"imap <expr><Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
-"let g:AutoPairsMapCR=0
-"imap <expr><CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>\<Plug>AutoPairsReturn")
-"let g:cm_refresh_length = [[1,4],[7,2]]
-"
-""""""""""""""""""""""""""""""
 "            COC             "
 """"""""""""""""""""""""""""""
 " Use csr to confirm completion
@@ -135,14 +120,15 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
+inoremap <silent><expr> <Down> pumvisible() ? "\<C-n>" : <NOP>
+inoremap <silent><expr> <Up> pumvisible() ? "\<C-p>" : <NOP>
+
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-nmap <silent> ]k <Plug>(coc-diagnostic-prev)
-nmap <silent> ]j <Plug>(coc-diagnostic-next)
-
+"gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -153,11 +139,50 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" multiple cursor navigating
+nmap <expr> <silent> <C-d> <SID>select_current_word()
+nnoremap <expr><silent> <C-k> <SID>skip_current_word()
+
+function! s:select_current_word()
+  if !get(g:, 'coc_cursors_activated', 0)
+    return "\<Plug>(coc-cursors-word)"
+  endif
+  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
+endfunc
+
+
+function! s:skip_current_word()
+  if !get(g:, 'coc_cursors_activated', 0)
+    return "<C-k>"
+  endif
+  return "*:nohlsearch\<CR>"
+endfunc
+
 """"""""""""""""""""""""""""""
 "       NVIM-TYPESCRIPT      "
 """"""""""""""""""""""""""""""
 let g:nvim_typescript#javascript_support = 1
-let g:nvim_typescript#diagnostics_enable =0
+let g:nvim_typescript#diagnostics_enable = 0
 let g:yats_host_keyword = 1
 
 """"""""""""""""""""""""""""""

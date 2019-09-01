@@ -47,7 +47,7 @@ nnoremap <leader>v :vsplit<CR>
 map <leader>bp f}%cSBBj:s/,/,\r/g<CR>$xa,<ESC>viB==
 
 " terminal mappings
-tnoremap <Esc><Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
 nnoremap <leader>tl <C-W><C-v> :terminal<cr>
 nnoremap <leader>tj <C-W><C-s> :terminal<cr>
 nnoremap <silent> <leader>tn :tabnew <bar> :terminal<cr>
