@@ -120,8 +120,8 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
-inoremap <silent><expr> <Down> pumvisible() ? "\<C-n>" : <NOP>
-inoremap <silent><expr> <Up> pumvisible() ? "\<C-p>" : <NOP>
+inoremap <silent><expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <silent><expr> <Up> pumvisible() ? "\<C-p>" : "\<Up>"
 
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
@@ -155,6 +155,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>rf <Plug>(coc-refactor)
 
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
@@ -177,6 +178,29 @@ function! s:skip_current_word()
   endif
   return "*:nohlsearch\<CR>"
 endfunc
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>ff  <Plug>(coc-fix-current)
+
+" Run jest for current project
+command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+
+" Run jest for current file
+command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+
+" Run jest for current test
+nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+
+nnoremap <leader>tc :JestCurrent<CR>
+
+" Init jest in current cwd, require global jest command exists
+command! JestInit :call CocAction('runCommand', 'jest.init')
 
 """"""""""""""""""""""""""""""
 "       NVIM-TYPESCRIPT      "
