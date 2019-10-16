@@ -5,7 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
 """"""""""""""""""""""""""""""
 " Javascript/typescript
 Plug 'soywod/typescript.vim'
-"Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'moll/vim-node'
 Plug 'mattn/emmet-vim'
 

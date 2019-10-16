@@ -120,9 +120,10 @@ fi
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 # brew install all the things
-brewInstallOrUpgrade python3 autojump python fortune cowsay rbenv ruby-build tmux rg fzf go
-brew tap caskroom/fonts
-brewCaskInstallOrUpgrade font-firacode-nerd-font
+echo "brew install/upgrade"
+brew tap coursier/formulas AdoptOpenJDK/openjdk caskroom/fonts
+brewCaskInstallOrUpgrade font-firacode-nerd-font adoptopenjdk8
+brewInstallOrUpgrade python3 autojump python fortune cowsay rbenv ruby-build tmux rg fzf go neovim coursier/formulas/coursier
 
 # Install Ruby and lolcat
 if [ ! -d $HOME/.rbenv/versions/$ruby_version ]; then
@@ -134,8 +135,7 @@ fi
 gemInstallOrUpgrade lolcat tmuxinator
 
 # Install neovim
-echo "Installing Neovim"
-brewInstallOrUpgrade neovim
+echo "pip install/upgrade"
 pipInstallOrUpgrade neovim powerline-status
 
 # source zshrc and Set base16 theme

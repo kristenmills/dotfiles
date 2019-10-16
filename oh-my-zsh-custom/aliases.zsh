@@ -48,3 +48,4 @@ alias wg='wget'
 
 #zsh things
 alias va='nvim $ZSH/custom/aliases.zsh'
+alias vim-'nvim'

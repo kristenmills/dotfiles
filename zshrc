@@ -87,5 +87,4 @@ alias vim='nvim'
 
 fortune | cowsay -f stegosaurus | lolcat
 
-set -o vi
-
+# The next line enables shell command completion for gcloud.

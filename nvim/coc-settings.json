@@ -25,6 +25,7 @@
     }
   },
   "tsserver.npm": "/Users/kristenmills/.nvm/versions/node/v12.6.0/bin/yarn",
-  "snippets.userSnippetsDirectory": "~/.config/nvim/UltiSnips/",
-  "tsserver.log": "verbose"
+  "tsserver.log": "verbose",
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
 }
