@@ -111,7 +111,7 @@ installOrUpdate $HOME/.config/base16-shell https://github.com/chriskempson/base1
 which -s brew
 if [[ $? != 0 ]] ; then
   echo "Installing Homebrew"
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 else
   echo "Updating Homebrew"
   brew update
