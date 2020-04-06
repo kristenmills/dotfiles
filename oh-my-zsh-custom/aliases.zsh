@@ -28,10 +28,10 @@ alias npm-exec='PATH=$(npm bin):$PATH'
 
 #programming languages
 alias love='/Applications/love.app/Contents/MacOS/love'
-alias py='python2'
-alias python='python2'
+alias py='python3'
+alias python='python3'
 alias py2='python2'
-alias pip='pip2'
+alias pip='pip3'
 alias spl='make -f /usr/spl/Makefile'
 
 #safety with kristen

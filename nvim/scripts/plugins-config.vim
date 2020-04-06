@@ -1,5 +1,3 @@
-let g:javascript_plugin_flow = 1
-let g:polyglot_disabled = ['typescript', 'tsx']
 """"""""""""""""""""""""""""""
 "            ACK             "
 """"""""""""""""""""""""""""""
@@ -20,9 +18,12 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'typescript': ['eslint'],
+\   'typescriptreact': ['eslint'],
+\   'javascriptreact': ['eslint'],
 \   'java': ['google-java-format'],
 \   'scala': ['scalafmt'],
 \   'go': ['goimports'],
+\   'python': ['black', 'isort'],
 \}
 
 let g:ale_fix_on_save = 1
@@ -33,10 +34,12 @@ let g:ale_linters = {
 \   'go': ['go build'],
 \   'yaml': ['yamllint'],
 \   'graphql': ['gqlint'],
+\   'python': ['flake8'],
 \}
 
 let g:ale_go_gometalinter_options = "--fast"
 let g:ale_lint_delay = 1000
+let g:ale_javascript_eslint_options  = "--no-ignore"
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -100,109 +103,6 @@ autocmd vimenter * NERDTreeToggle
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """"""""""""""""""""""""""""""
-"            COC             "
-""""""""""""""""""""""""""""""
-" Use csr to confirm completion
-inoremap <silent><expr> <cr>
-  \ pumvisible() ? coc#_select_confirm() :
-  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-  \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<c-r>=AutoPairsReturn()\<CR>"
-
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-inoremap <silent><expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <silent><expr> <Up> pumvisible() ? "\<C-p>" : "\<Up>"
-
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Close preview window when completion is done.
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
-"gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>rf <Plug>(coc-refactor)
-
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" multiple cursor navigating
-nmap <expr> <silent> <C-d> <SID>select_current_word()
-nnoremap <expr><silent> <C-k> <SID>skip_current_word()
-
-function! s:select_current_word()
-  if !get(g:, 'coc_cursors_activated', 0)
-    return "\<Plug>(coc-cursors-word)"
-  endif
-  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
-endfunc
-
-
-function! s:skip_current_word()
-  if !get(g:, 'coc_cursors_activated', 0)
-    return "<C-k>"
-  endif
-  return "*:nohlsearch\<CR>"
-endfunc
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>ff  <Plug>(coc-fix-current)
-
-" Run jest for current project
-command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
-
-" Run jest for current file
-command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
-
-" Run jest for current test
-nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
-
-nnoremap <leader>tc :JestCurrent<CR>
-
-" Init jest in current cwd, require global jest command exists
-command! JestInit :call CocAction('runCommand', 'jest.init')
-
-""""""""""""""""""""""""""""""
 "       NVIM-TYPESCRIPT      "
 """"""""""""""""""""""""""""""
 let g:nvim_typescript#javascript_support = 1
@@ -260,6 +160,13 @@ let g:go_snippet_engine = "neosnippet"
 let g:vim_jsx_pretty_colorful_config = 1
 
 """"""""""""""""""""""""""""""
+"        VIM-POlYGLOT        "
+""""""""""""""""""""""""""""""
+let g:javascript_plugin_flow = 1
+let g:polyglot_disabled = ['typescript', 'tsx', 'typescriptreact']
+
+
+""""""""""""""""""""""""""""""
 "         VIM-SCALA          "
 """"""""""""""""""""""""""""""
 au BufRead,BufNewFile *.sbt set filetype=scala
@@ -269,3 +176,5 @@ au BufRead,BufNewFile *.sbt set filetype=scala
 """"""""""""""""""""""""""""""
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:NERDSpaceDelims = 1
+autocmd BufNewFile,BufRead *.tsx setlocal ft=typescript.tsx

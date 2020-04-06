@@ -123,7 +123,7 @@ git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/theme
 echo "brew install/upgrade"
 brew tap coursier/formulas AdoptOpenJDK/openjdk caskroom/fonts
 brewCaskInstallOrUpgrade font-firacode-nerd-font adoptopenjdk8
-brewInstallOrUpgrade python3 autojump python fortune cowsay rbenv ruby-build tmux rg fzf go neovim coursier/formulas/coursier
+brewInstallOrUpgrade python3 autojump python fortune cowsay rbenv ruby-build tmux rg fzf go neovim coursier/formulas/coursier git-extras
 
 # Install Ruby and lolcat
 if [ ! -d $HOME/.rbenv/versions/$ruby_version ]; then
