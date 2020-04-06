@@ -19,6 +19,7 @@ Plug 'jparise/vim-graphql'
 Plug 'google/vim-jsonnet'
 
 Plug 'sheerun/vim-polyglot'
+Plug 'gisphm/vim-gitignore'
 
 " Go
 Plug 'fatih/vim-go'
@@ -26,6 +27,7 @@ Plug 'fatih/vim-go'
 """""""""""""""""""""""""""""""
 "             UI             "
 """"""""""""""""""""""""""""""
+Plug 'arcticicestudio/nord-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'cocopon/inspecthi.vim'
 Plug 'cocopon/colorswatch.vim'
@@ -41,12 +43,7 @@ Plug 'vim-airline/vim-airline-themes'
 """"""""""""""""""""""""""""""
 "        COMPLETEION         "
 """"""""""""""""""""""""""""""
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 """"""""""""""""""""""""""""""
 "            GIT             "
@@ -69,7 +66,7 @@ Plug 'w0rp/ale'
 """"""""""""""""""""""""""""""
 "          SNIPPETS          "
 """"""""""""""""""""""""""""""
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 """"""""""""""""""""""""""""""

@@ -72,9 +72,6 @@ set clipboard=unnamed
 "netrw file explorer
 let g:netrw_liststyle = 3
 
-" Better display for messages
-set cmdheight=2
-
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
@@ -87,5 +84,10 @@ augroup MyColors
   autocmd!
   autocmd ColorScheme * call MyHighlights()
 augroup END
+
+" if filereadable(expand("~/.vimrc_background"))
+  " let base16colorspace=256
+  " source ~/.vimrc_background
+" endif
 
 colorscheme nova
