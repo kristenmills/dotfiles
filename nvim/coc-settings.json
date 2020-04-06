@@ -24,8 +24,6 @@
 
     }
   },
-  "tsserver.npm": "/Users/kristenmills/.nvm/versions/node/v12.6.0/bin/yarn",
-  "tsserver.log": "verbose",
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
 }
