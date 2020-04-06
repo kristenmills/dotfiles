@@ -83,6 +83,3 @@ alias vim='nvim'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 fortune | cowsay -f stegosaurus | lolcat
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/kristenmills/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kristenmills/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
