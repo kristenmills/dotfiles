@@ -121,7 +121,9 @@ git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/theme
 
 # brew install all the things
 echo "brew install/upgrade"
-brew tap coursier/formulas AdoptOpenJDK/openjdk caskroom/fonts
+brew tap coursier/formulas
+brew tap AdoptOpenJDK/openjdk
+brew tap caskroom/fonts
 brewCaskInstallOrUpgrade font-firacode-nerd-font adoptopenjdk8
 brewInstallOrUpgrade python3 autojump python fortune cowsay rbenv ruby-build tmux rg fzf go neovim coursier/formulas/coursier git-extras
 
