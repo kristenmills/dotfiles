@@ -27,7 +27,7 @@ function installOrUpdate() {
 function createOverrides() {
   if [ ! -e $1.overrides ]; then
     echo "Creating $1.overrides"
-    echo "$2 For things I don't want to accidently commit" > $1.overrides
+    echo "$2 For things I don't want to accidentally commit" > $1.overrides
   fi
 }
 
@@ -44,9 +44,9 @@ function brewInstallOrUpgrade() {
 function brewCaskInstallOrUpgrade() {
   for pkg in "$@"; do
     if brew ls --versions "$pkg" >/dev/null; then
-      HOMEBREW_NO_AUTO_UPDATE=1 brew cask upgrade "$pkg"
+      HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade --cask "$pkg"
     else
-      HOMEBREW_NO_AUTO_UPDATE=1 brew cask install "$pkg"
+      HOMEBREW_NO_AUTO_UPDATE=1 brew install --cask "$pkg"
     fi
   done
 }
@@ -75,7 +75,8 @@ git submodule init
 git submodule update --remote
 
 dotfiles=`pwd`
-ruby_version=2.3.0
+ruby_version=3.1.0
+
 
 mkdir -p $HOME/.config
 mkdir -p $dotfiles/vim/undo
@@ -107,7 +108,7 @@ moveAndLink $HOME/.zshrc $dotfiles/zshrc
 # install or update all the things
 installOrUpdate $HOME/.config/base16-shell https://github.com/chriskempson/base16-shell
 
-# Install or update  Homebrew
+# Install or update Homebrew
 which -s brew
 if [[ $? != 0 ]] ; then
   echo "Installing Homebrew"
@@ -123,8 +124,8 @@ git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/theme
 echo "brew install/upgrade"
 brew tap coursier/formulas
 brew tap AdoptOpenJDK/openjdk
-brew tap caskroom/fonts
-brewCaskInstallOrUpgrade font-firacode-nerd-font adoptopenjdk8
+brew tap homebrew/cask-fonts
+brewInstallOrUpgrade font-fira-code-nerd-font
 brewInstallOrUpgrade python3 autojump python fortune cowsay rbenv ruby-build tmux rg fzf go neovim coursier/formulas/coursier git-extras
 
 # Install Ruby and lolcat
