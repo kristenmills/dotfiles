@@ -24,6 +24,7 @@ let g:ale_fixers = {
 \   'scala': ['scalafmt'],
 \   'go': ['goimports'],
 \   'python': ['black', 'isort'],
+\   'ruby': ['rubocop'],
 \}
 
 let g:ale_fix_on_save = 1
@@ -35,6 +36,7 @@ let g:ale_linters = {
 \   'yaml': ['yamllint'],
 \   'graphql': ['gqlint'],
 \   'python': ['flake8'],
+\   'ruby': ['rubocop'],
 \}
 
 let g:ale_go_gometalinter_options = "--fast"
@@ -46,6 +48,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
+" let g:ale_ruby_rubocop_executable = 'bundle'
 
 
 """"""""""""""""""""""""""""""
@@ -163,7 +166,6 @@ let g:vim_jsx_pretty_colorful_config = 1
 "        VIM-POlYGLOT        "
 """"""""""""""""""""""""""""""
 let g:javascript_plugin_flow = 1
-let g:polyglot_disabled = ['typescript', 'tsx', 'typescriptreact']
 
 
 """"""""""""""""""""""""""""""
@@ -178,3 +180,5 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:NERDSpaceDelims = 1
 autocmd BufNewFile,BufRead *.tsx setlocal ft=typescript.tsx
+
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")

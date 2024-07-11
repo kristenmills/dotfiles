@@ -10,7 +10,8 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-styled-components',
   \ 'coc-tsserver',
-  \ 'coc-yaml'
+  \ 'coc-yaml',
+  \ 'coc-solargraph'
   \ ]
 
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
@@ -54,7 +55,7 @@ nmap <leader>ff  <Plug>(coc-fix-current)
 """"""""""""""""""""""""""""""
 " Use csr to confirm completion
 inoremap <silent><expr> <cr>
-  \ pumvisible() ? coc#_select_confirm() :
+  \ coc#pum#visible() ? coc#_select_confirm() :
   \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
   \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<c-r>=AutoPairsReturn()\<CR>"
 
@@ -64,27 +65,23 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ coc#pum#visible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
-inoremap <silent><expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <silent><expr> <Up> pumvisible() ? "\<C-p>" : "\<Up>"
+" inoremap <silent><expr> <Down> coc#pum#visible() ? "\<C-n>" : "\<Down>"
+" inoremap <silent><expr> <Up> coc#pum#visible() ? "\<C-p>" : "\<Up>"
 
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? "\<C-p>" : "\<S-Tab>"
 
 " Close preview window when completion is done.
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+autocmd! CompleteDone * if coc#pum#visible() == 0 | pclose | endif
+
 
 """"""""""""""""""""""""""""""
 "       DOCUMENTATION        "
 """"""""""""""""""""""""""""""
 
-"gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -98,7 +95,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-""""""""""""""""""""""""""""""
+ """""""""""""""""""""""""""""
 "            JEST            "
 """"""""""""""""""""""""""""""
 " Run jest for current project
@@ -142,3 +139,12 @@ nmap <silent> <leader>rn <Plug>(coc-rename)
 nmap <silent> <leader>rr <Plug>(coc-refactor)
 nmap <silent> <leader>rf <Plug>(coc-rename-file)
 
+""""""""""""""""""""""""""""""
+"         DEFINITION         "
+""""""""""""""""""""""""""""""
+command! -nargs=0 VsplitDef :call  CocAction('jumpDefinition', 'vsplit')
+"gotos
+nmap <silent> gd :VsplitDef<CR>
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)

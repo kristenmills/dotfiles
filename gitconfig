@@ -2,7 +2,8 @@
     user = kristenmills
 [user]
     name = Kristen Mills
-    email = kristen@kristen-mills.com
+    email = kristen@found.com
+	signingkey = 91761CEF79A0B251
 [color]
     ui = auto
   [color "branch"]
@@ -36,6 +37,7 @@
     nfmerge = merge --no-ff
 [push]
     default = simple
+	autoSetupRemote = true
 [help]
     autocorrect = 1
 [credential]
@@ -52,3 +54,7 @@
     required = true
 [url "git@github.com:"]
   insteadOf = https://github.com/
+[pull]
+	rebase = true
+[commit]
+	gpgsign = false

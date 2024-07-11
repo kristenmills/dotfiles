@@ -24,6 +24,9 @@ Plug 'gisphm/vim-gitignore'
 " Go
 Plug 'fatih/vim-go'
 
+" Danger
+Plug 'hjanuschka/vim-danger'
+
 """""""""""""""""""""""""""""""
 "             UI             "
 """"""""""""""""""""""""""""""
@@ -35,14 +38,15 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-vinegar'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'trevordmiller/nova-vim'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'kristenmills/nova-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 """"""""""""""""""""""""""""""
 "        COMPLETEION         "
 """"""""""""""""""""""""""""""
+Plug 'github/copilot.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 """"""""""""""""""""""""""""""
@@ -55,7 +59,7 @@ Plug 'airblade/vim-gitgutter'
 "    SEARCH/FUZZY FINDING    "
 """"""""""""""""""""""""""""""
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 """"""""""""""""""""""""""""""
