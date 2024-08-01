@@ -36,6 +36,7 @@
     nfmerge = merge --no-ff
 [push]
     default = simple
+	autoSetupRemote = true
 [help]
     autocorrect = 1
 [credential]
@@ -52,3 +53,7 @@
     required = true
 [url "git@github.com:"]
   insteadOf = https://github.com/
+[pull]
+	rebase = true
+[commit]
+	gpgsign = false

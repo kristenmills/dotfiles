@@ -1,3 +1,4 @@
+"OUu
 "Show the status bar
 set laststatus=2
 

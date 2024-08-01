@@ -39,7 +39,7 @@ CC=clang
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx git-extras yarn nvm autojump kubectl golang zsh_reload rake heroku virtualenv)
+plugins=(git git-extras yarn nvm autojump kubectl golang rake heroku virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -60,6 +60,7 @@ export PATH="$PATH:/Library/TeX/texbin/"
 export PATH=$PATH:/usr/local/heroku/bin
 export CGO_CFLAGS_ALLOW="-Xpreprocessor"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
@@ -82,5 +83,31 @@ export PATH=$PATH:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/bin:/usr/local/git/bi
 alias vim='nvim'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
 fortune | cowsay -f stegosaurus | lolcat
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+export GPG_TTY=$(tty)
+#compdef gt
+###-begin-gt-completions-###
+#
+# yargs command completion script
+#
+# Installation: gt completion >> ~/.zshrc
+#    or gt completion >> ~/.zprofile on OSX.
+#
+_gt_yargs_completions()
+{
+  local reply
+  local si=$IFS
+  IFS=$'
+' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" gt --get-yargs-completions "${words[@]}"))
+  IFS=$si
+  _describe 'values' reply
+}
+compdef _gt_yargs_completions gt
+###-end-gt-completions-###
+
