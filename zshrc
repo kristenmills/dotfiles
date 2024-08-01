@@ -60,6 +60,7 @@ export PATH="$PATH:/Library/TeX/texbin/"
 export PATH=$PATH:/usr/local/heroku/bin
 export CGO_CFLAGS_ALLOW="-Xpreprocessor"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
@@ -82,11 +83,11 @@ export PATH=$PATH:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/bin:/usr/local/git/bi
 alias vim='nvim'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
 fortune | cowsay -f stegosaurus | lolcat
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-eval "$(rbenv init - zsh)"
 source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 export GPG_TTY=$(tty)
